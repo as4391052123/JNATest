@@ -138,6 +138,57 @@ public class TestSPApi {
 			
 			
 		}
+	
+		public class SPApiOrder extends Structure
+		{
+
+			public double Price;
+			public double StopLevel;
+			public double UpLevel;
+			public double UpPrice;
+			public double DownLevel;
+			public double DownPrice;
+			public bigint ExtOrderNo;
+			public int32_t IntOrderNo;
+			public int32_t Qty;
+			public int32_t TradedQty;
+			public int32_t TotalQty;
+			public int32_t ValidTime;
+			public int32_t SchedTime;
+			public int32_t TimeStamp;
+			public u_long OrderOptions;
+			public STR16 AccNo;
+			public STR16 ProdCode;
+			public STR16 Initiator;
+			public STR16 Ref;
+			public STR16 Ref2;
+			public STR16 GatewayCode;
+			public STR40 ClOrderId;
+			public char BuySell;
+			public char StopType;
+			public char OpenClose;
+			public tinyint CondType;
+			public tinyint OrderType;
+			public tinyint ValidType;
+			public tinyint Status;
+			public tinyint DecInPrice;
+			public tinyint OrderAction;
+			public int32_t updateTime;
+			public int32_t updateSeqNo;
+			
+			
+			
+			@Override
+			protected List getFieldOrder()
+			{
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			
+			
+		}
+		
 	}
 	
 	
