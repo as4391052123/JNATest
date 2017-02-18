@@ -148,41 +148,39 @@ public class TestSPApi {
 			public double UpPrice;
 			public double DownLevel;
 			public double DownPrice;
-			public bigint ExtOrderNo;
-			public int32_t IntOrderNo;
-			public int32_t Qty;
-			public int32_t TradedQty;
-			public int32_t TotalQty;
-			public int32_t ValidTime;
-			public int32_t SchedTime;
-			public int32_t TimeStamp;
-			public u_long OrderOptions;
-			public STR16 AccNo;
-			public STR16 ProdCode;
-			public STR16 Initiator;
-			public STR16 Ref;
-			public STR16 Ref2;
-			public STR16 GatewayCode;
-			public STR40 ClOrderId;
+			public int ExtOrderNo;
+			public int IntOrderNo;
+			public int Qty;
+			public int TradedQty;
+			public int TotalQty;
+			public int ValidTime;
+			public int SchedTime;
+			public int TimeStamp;
+			public long OrderOptions;
+			public char[] AccNo = new char[16];
+			public char[] ProdCode = new char[16];
+			public char[] Initiator = new char[16];
+			public char[] Ref = new char[16];
+			public char[] Ref2 = new char[16];
+			public char[] GatewayCode = new char[16];
+			public char[] ClOrderId = new char[40];
 			public char BuySell;
 			public char StopType;
 			public char OpenClose;
-			public tinyint CondType;
-			public tinyint OrderType;
-			public tinyint ValidType;
-			public tinyint Status;
-			public tinyint DecInPrice;
-			public tinyint OrderAction;
-			public int32_t updateTime;
-			public int32_t updateSeqNo;
+			public int CondType;
+			public int OrderType;
+			public int ValidType;
+			public int Status;
+			public int DecInPrice;
+			public int OrderAction;
+			public int updateTime;
+			public int updateSeqNo;
 			
-			
-			
+	
 			@Override
 			protected List getFieldOrder()
 			{
-				// TODO Auto-generated method stub
-				return null;
+				return Arrays.asList(new String[]{"Price",	"StopLevel",	"UpLevel",	"UpPrice",	"DownLevel",	"DownPrice",	"ExtOrderNo",	"IntOrderNo",	"Qty",	"TradedQty",	"TotalQty",	"ValidTime",	"SchedTime",	"TimeStamp",	"OrderOptions",	"AccNo",	"ProdCode",	"Initiator",	"Ref",	"Ref2",	"GatewayCode",	"ClOrderId",	"BuySell",	"StopType",	"OpenClose",	"CondType",	"OrderType",	"ValidType",	"Status",	"DecInPrice",	"OrderAction",	"updateTime",	"updateSeqNo"});
 			}
 			
 			
