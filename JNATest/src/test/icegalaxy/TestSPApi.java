@@ -16,7 +16,6 @@ import test.icegalaxy.TestSPApi.SPApiDll.AccLoginReply;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterConn;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterError;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoginReply;
-import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoginStatusUpdate;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterPriceUpdate;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiPrice;
@@ -36,7 +35,7 @@ public class TestSPApi {
 	
 		int SPAPI_Logout(String user_id);
 		
-		void SPAPI_AddOrder(SPApiOrder order);
+		int SPAPI_AddOrder(SPApiOrder order);
 		
 		int SPAPI_SubscribePrice(String user_id, String prod_code, int mode);
 		
