@@ -9,19 +9,16 @@ import com.sun.jna.Callback;
 import com.sun.jna.Library;
 
 import com.sun.jna.Native;
-import com.sun.jna.Platform;
+
 import com.sun.jna.Structure;
-import com.sun.jna.win32.StdCallLibrary;
 
-import test.icegalaxy.HelloWorld.CLibrary;
-
+import test.icegalaxy.TestSPApi.SPApiDll.AccLoginReply;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterConn;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterError;
-import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoadTradeEnd;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoginReply;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoginStatusUpdate;
-import test.icegalaxy.TestSPApi.SPApiDll.RegisterPServerLink;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterPriceUpdate;
+import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiPrice;
 
 public class TestSPApi {
@@ -33,28 +30,35 @@ public class TestSPApi {
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 		int SPAPI_Initialize();
 		int SPAPI_Uninitialize();
-		void SPAPI_SetBackgroundPoll(boolean onoff);
+		
 		void SPAPI_SetLoginInfo(String server, int port, String license, String app_id, String userid, String password);
 		int SPAPI_Login();
-		int SPAPI_GetLoginStatus(int host_id);
+	
 		int SPAPI_Logout(String user_id);
-		void SPAPI_Poll();
+		
+		void SPAPI_AddOrder(SPApiOrder order);
+		
 		int SPAPI_SubscribePrice(String user_id, String prod_code, int mode);
 		
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 		
 		void SPAPI_RegisterConnectingReply(RegisterConn conn);
 		
+		void SPAPI_RegisterAccountLoginReply(AccLoginReply loginReply);
+		
 //		void SPAPI_RegisterTradeReport(RegisterTradeReport tradeReport);
-		void SPAPI_RegisterLoadTradeEnd(RegisterLoadTradeEnd loadTradeEnd);
+	
 		
 		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
 		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
 		
-		void SPAPI_RegisterPServerLinkStatusUpdate(RegisterPServerLink serverLink);
 		void SPAPI_RegisterConnectionErrorUpdate(RegisterError error);
 		
-		
+		public interface AccLoginReply extends Callback
+		{
+			void invoke(String accNo, long ret_code,
+				String ret_msg);
+		}
 		
 		public interface RegisterPriceUpdate extends Callback
 		{
@@ -77,15 +81,8 @@ public class TestSPApi {
 			void invoke(short host_id, long link_err);
 		}
 		
-		public interface RegisterPServerLink extends Callback
-		{
-			void invoke(short host_id, long con_status);
-		}
 		
-		public interface RegisterLoadTradeEnd extends Callback
-		{
-			void invoke(String acc_no);
-		}
+	
 		
 		
 		public interface RegisterLoginReply extends Callback{
@@ -189,25 +186,71 @@ public class TestSPApi {
 		
 	}
 	
+//	   public int addOrder(String userID, char buy_sell, String clorderid, String decinprice, bool is_ao)
+//       {
+//           int rc;
+//           SPApiOrder order = new SPApiOrder();
+//           String acc = accNo;
+//
+//
+//           if (Spcommon.S_Prot == 8081) acc = Spcommon.ord_acc_no;
+//           else acc = Spcommon.acc_no;
+//
+//           order.AccNo = acc;
+//           order.Initiator = Spcommon.userID;
+//           order.BuySell = Convert.ToByte(buy_sell);
+//           
+//           order.Qty = 2;
+//           
+//           order.ProdCode = "MHIG7";
+//
+//           order.Ref = "@JAVA#TRADERAPI";      //参考
+//           order.Ref2 = "0";
+//           order.GatewayCode = "";
+//          
+//           order.CondType = 0;
+//           order.ClOrderId = clorderid;
+//           order.ValidType = 0;
+//           order.DecInPrice = Convert.ToByte(decinprice);
+//
+//           if (is_ao)
+//           {
+//               order.OrderType = Spcommon.ORD_AUCTION;
+//               order.Price = Spcommon.AO_PRC;
+//               order.StopType = 0;
+//               order.StopLevel = 0;
+//           }
+//           else
+//           {
+//               order.OrderType = 6; //market order
+//               order.Price = 0; // market price
+//           }
+//
+//           rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);  //rc:0 成功 //modif xiaolin 2012-12-27
+//
+//           return rc;
+////           if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add Order Success!"); }
+////           else { if (DllShowTextData != null) DllShowTextData("Add Order Failure! " + rc.ToString()); }
+//
+//       }
 	
-	
-	
+	 
 	
 	 public static void main(String[] args) {
 		 
-		 int port = 8080;
-		    String license = "76C2FB5B60006C7A";
-		    String app_id  = "BS";
-		    String userid = "T865829";
-		    String password = "ting1980";
-		    String server = "futures.bsgroup.com.hk";
+//		 int port = 8080;
+//		    String license = "76C2FB5B60006C7A";
+//		    String app_id  = "BS";
+//		    String userid = "T865829";
+//		    String password = "ting1980";
+//		    String server = "futures.bsgroup.com.hk";
 		    
-//		    int port = 8080;
-//		    String license = "58A665DE84D02";
-//		    String app_id  = "SPDEMO";
-//		    String userid = "DEMO201702141";
-//		    String password = "vo2yv";
-//		    String server = "demo.spsystem.info";
+		    int port = 8080;
+		    String license = "58A665DE84D02";
+		    String app_id  = "SPDEMO";
+		    String userid = "DEMO201702141";
+		    String password = "vo2yv";
+		    String server = "demo.spsystem.info";
 		 
 		 int in = 1;
 		 int un = 1;
@@ -216,6 +259,15 @@ public class TestSPApi {
 		 int logout = 1;
 		
 		 
+		 AccLoginReply accReply = new AccLoginReply(){
+			 
+			 @Override
+			 public void invoke(String accNo, long ret_code,
+				String ret_msg)
+			 {
+				 System.out.println("AccNo: " + accNo);
+			 }
+		 };
 	
 		 
 		 RegisterPriceUpdate priceUpdate = new RegisterPriceUpdate() {
@@ -247,14 +299,7 @@ public class TestSPApi {
 			}
 		};
 		 
-		 RegisterPServerLink serverLink = new RegisterPServerLink() {
-			
-			@Override
-			public void invoke(short host_id, long con_status) {
-				System.out.println("Server Link: " +  con_status);
-				
-			}
-		};
+		
 		 
 		 RegisterLoginReply loginReply = new RegisterLoginReply() {
 			
@@ -265,27 +310,12 @@ public class TestSPApi {
 			}
 		};
 		
-		RegisterLoginStatusUpdate update = new RegisterLoginStatusUpdate() {
-				
-				 @Override
-				public void printStatus(long login_status) {
-					System.out.println("Login status: " + login_status);
-					
-				}
-			};
+	
 			
-			RegisterLoadTradeEnd load = new RegisterLoadTradeEnd() {
-				
-				@Override
-				public void invoke(String acc_no) {
-					System.out.println("LoadTradeEnd: " + acc_no);
-					
-				}
-			};
+			
 		 
 			  in = SPApiDll.INSTANCE.SPAPI_Initialize();
 			
-//			  SPApiDll.INSTANCE.SPAPI_RegisterLoadTradeEnd(load);
 			  
 //			 SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 			 
@@ -293,14 +323,12 @@ public class TestSPApi {
 		   
 //			 SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 			
-//			 SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(serverLink);
 			 
 //			 SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 	     
-//	       SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
-	       
-//	       SPApiDll.INSTANCE.SPAPI_Poll();
 			 SPApiDll.INSTANCE.SPAPI_RegisterConnectingReply(conn);
+			 
+			 SPApiDll.INSTANCE.SPAPI_RegisterAccountLoginReply(accReply);
 			 
 	       SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 	       
