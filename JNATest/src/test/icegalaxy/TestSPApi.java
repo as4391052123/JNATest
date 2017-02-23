@@ -24,6 +24,20 @@ public class TestSPApi {
 	
 	static int counter;
 	static long status = 0;
+	
+//	 int port = 8080;
+//    String license = "76C2FB5B60006C7A";
+//    String app_id  = "BS";
+//    String userid = "T865829";
+//    String password = "ting1980";
+//    String server = "futures.bsgroup.com.hk";
+    
+    static int port = 8080;
+    static String license = "58A665DE84D02";
+    static String app_id  = "SPDEMO";
+    static String userid = "DEMO201702141";
+    static String password = "vo2yv";
+    static String server = "demo.spsystem.info";
 
 	public interface SPApiDll extends Library {
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
@@ -185,71 +199,47 @@ public class TestSPApi {
 		
 	}
 	
-//	   public int addOrder(String userID, char buy_sell, String clorderid, String decinprice, bool is_ao)
-//       {
-//           int rc;
-//           SPApiOrder order = new SPApiOrder();
-//           String acc = accNo;
-//
-//
-//           if (Spcommon.S_Prot == 8081) acc = Spcommon.ord_acc_no;
-//           else acc = Spcommon.acc_no;
-//
-//           order.AccNo = acc;
-//           order.Initiator = Spcommon.userID;
-//           order.BuySell = Convert.ToByte(buy_sell);
-//           
-//           order.Qty = 2;
-//           
-//           order.ProdCode = "MHIG7";
-//
-//           order.Ref = "@JAVA#TRADERAPI";      //参考
-//           order.Ref2 = "0";
-//           order.GatewayCode = "";
-//          
-//           order.CondType = 0;
-//           order.ClOrderId = clorderid;
-//           order.ValidType = 0;
-//           order.DecInPrice = Convert.ToByte(decinprice);
-//
-//           if (is_ao)
-//           {
-//               order.OrderType = Spcommon.ORD_AUCTION;
-//               order.Price = Spcommon.AO_PRC;
-//               order.StopType = 0;
-//               order.StopLevel = 0;
-//           }
-//           else
-//           {
-//               order.OrderType = 6; //market order
-//               order.Price = 0; // market price
-//           }
-//
-//           rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);  //rc:0 成功 //modif xiaolin 2012-12-27
-//
-//           return rc;
-////           if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add Order Success!"); }
-////           else { if (DllShowTextData != null) DllShowTextData("Add Order Failure! " + rc.ToString()); }
-//
-//       }
+  public static int addOrder(char buy_sell)
+    {
+        int rc;
+        SPApiOrder order = new SPApiOrder();
+      
+
+        order.AccNo = userid.toCharArray();
+        order.Initiator = userid.toCharArray();
+        order.BuySell = buy_sell;
+        
+        order.Qty = 2;
+        
+        order.ProdCode = "MHIG7".toCharArray();
+
+        order.Ref = "@JAVA#TRADERAPI".toCharArray();      
+        order.Ref2 = "0".toCharArray();
+        order.GatewayCode = " ".toCharArray();
+       
+        order.CondType = 0; //normal type
+        order.ClOrderId = "0".toCharArray();
+        order.ValidType = 0;
+        order.DecInPrice = 0;
+
+        
+            order.OrderType = 6; //market order
+            order.Price = 0; // market price
+        
+
+        rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order); 
+
+        return rc;
+//        if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add Order Success!"); }
+//        else { if (DllShowTextData != null) DllShowTextData("Add Order Failure! " + rc.ToString()); }
+
+    }
 	
 	 
 	
 	 public static void main(String[] args) {
 		 
-//		 int port = 8080;
-//		    String license = "76C2FB5B60006C7A";
-//		    String app_id  = "BS";
-//		    String userid = "T865829";
-//		    String password = "ting1980";
-//		    String server = "futures.bsgroup.com.hk";
-		    
-		    int port = 8080;
-		    String license = "58A665DE84D02";
-		    String app_id  = "SPDEMO";
-		    String userid = "DEMO201702141";
-		    String password = "vo2yv";
-		    String server = "demo.spsystem.info";
+
 		 
 		 int in = 1;
 		 int un = 1;
@@ -355,6 +345,8 @@ public class TestSPApi {
 	       
 	       System.out.println("Price subscribed: " + price);
 	       
+	       addOrder('B');
+	       
 	       while (true)
 	       {
 	    	   try {
@@ -368,6 +360,8 @@ public class TestSPApi {
 	    	  if (counter > 10)
 	    		  break;
 	       }
+	       
+	       addOrder('S');
 	      
 	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLH7", 0);
 	       try {
