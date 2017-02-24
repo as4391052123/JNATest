@@ -17,8 +17,10 @@ import test.icegalaxy.TestSPApi.SPApiDll.RegisterConn;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterError;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoginReply;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterPriceUpdate;
+import test.icegalaxy.TestSPApi.SPApiDll.RegisterTradeReport;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiPrice;
+import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 
 public class TestSPApi {
 	
@@ -53,6 +55,8 @@ public class TestSPApi {
 		
 		int SPAPI_SubscribePrice(String user_id, String prod_code, int mode);
 		
+		void SPAPI_RegisterLoadTradeReadyPush(RegisterTradeReport tradeReport);
+		
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 		
 		void SPAPI_RegisterConnectingReply(RegisterConn conn);
@@ -65,7 +69,12 @@ public class TestSPApi {
 		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
 		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
 		
-		void SPAPI_RegisterConnectionErrorUpdate(RegisterError error);
+//	f 	void SPAPI_RegisterConnectionErrorUpdate(RegisterError error);
+		
+		public interface RegisterTradeReport extends Callback
+		{
+			void invoke(long rec_no, SPApiTrade trade);
+		}
 		
 		public interface AccLoginReply extends Callback
 		{
@@ -104,6 +113,43 @@ public class TestSPApi {
 		
 		public interface RegisterLoginStatusUpdate extends Callback{
 			void printStatus(long login_status);
+		}
+		
+		public class SPApiTrade extends Structure
+		{
+			public double RecNo;
+			public double Price;
+			public double AvgPrice;
+			public int TradeNo;
+			public int ExtOrderNo;
+			public int IntOrderNo;
+			public int Qty;
+			public int TradeDate;
+			public int TradeTime;
+			public char[] AccNo = new char[16];
+			public char[] ProdCode = new char[16];
+			public char[] Initiator = new char[16];
+			public char[] Ref = new char[16];
+			public char[] Ref2 = new char[16];
+			public char[] GatewayCode = new char[16];
+			public char[] ClOrderId = new char[40];
+			public char BuySell;
+			public char OpenClose;
+			public int Status;
+			public int DecInPrice;
+			public double OrderPrice;
+			public char[] TradeRef = new char[40];
+			public int TotalQty;
+			public int RemainingQty;
+			public int TradedQty;
+             public double AvgTradedPrice;
+              
+			@Override
+			protected List getFieldOrder()
+			{
+				// TODO Auto-generated method stub
+				return Arrays.asList(new String[]{"RecNo",	"Price",	"AvgPrice",	"TradeNo",	"ExtOrderNo",	"IntOrderNo",	"Qty",	"TradeDate",	"TradeTime",	"AccNo",	"",	"ProdCode",	"Initiator",	"Ref",	"Ref2",	"GatewayCode",	"ClOrderId",	"BuySell",	"OpenClose",	"Status",	"DecInPrice",	"OrderPrice",	"TradeRef",	"TotalQty",	"RemainingQty",	"TradedQty",	"AvgTradedPrice"});
+			}
 		}
 		
 		public class SPApiPrice extends Structure
@@ -247,6 +293,15 @@ public class TestSPApi {
 		 int login = 1;
 		 int logout = 1;
 		
+		 RegisterTradeReport tradeReport = new RegisterTradeReport()
+		{
+			
+			@Override
+			public void invoke(long rec_no, SPApiTrade trade)
+			{
+				System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
+			}
+		};
 		 
 		 AccLoginReply accReply = new AccLoginReply(){
 			 
@@ -308,7 +363,9 @@ public class TestSPApi {
 			  
 //			 SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 			 
-			 SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
+			 SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);                                                          
+			 
+			 SPApiDll.INSTANCE.SPAPI_RegisterLoadTradeReadyPush(tradeReport);
 		   
 //			 SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 			
