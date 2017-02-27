@@ -328,7 +328,7 @@ public class TestSPApi {
 			
 			@Override
 			public void invoke(SPApiPrice price) {
-				System.out.println("Lastest Deal: " + price.Last[0]);
+				System.out.println("Lastest Deal: " + price.Last[0] + ", Open: " + price.Open);
 				
 			}
 
