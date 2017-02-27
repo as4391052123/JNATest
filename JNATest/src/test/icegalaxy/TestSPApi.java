@@ -46,6 +46,8 @@ public class TestSPApi {
 		int SPAPI_Initialize();
 		int SPAPI_Uninitialize();
 		
+		int SPAPI_GetPriceByCode(String user_id, String prod_code, SPApiPrice price);
+		
 		void SPAPI_SetLoginInfo(String server, int port, String license, String app_id, String userid, String password);
 		int SPAPI_Login();
 	
@@ -245,6 +247,14 @@ public class TestSPApi {
 		
 	}
 	
+	public static int getPriceByCode()
+	{
+		SPApiPrice price = new SPApiPrice();
+		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, "CLH7", price);
+		System.out.println("Get price by code: " + price.Last);
+		return i;
+	}
+	
   public static int addOrder(char buy_sell)
     {
         int rc;
@@ -401,6 +411,8 @@ public class TestSPApi {
 	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLH7", 1);
 	       
 	       System.out.println("Price subscribed: " + price);
+	       
+	       getPriceByCode();
 	       
 	       addOrder('B');
 	       
