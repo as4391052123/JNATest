@@ -251,7 +251,7 @@ public class TestSPApi {
 	{
 		SPApiPrice price = new SPApiPrice();
 		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, "CLH7", price);
-		System.out.println("Get price by code: " + price.Last);
+		System.out.println("Get price by code: " + price.Last[0]);
 		return i;
 	}
 	
