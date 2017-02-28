@@ -26,6 +26,8 @@ public class TestSPApi {
 	
 	static int counter;
 	static long status = 0;
+	public static double currentBid;
+	public static double currentAsk;
 	
 //	 int port = 8080;
 //    String license = "76C2FB5B60006C7A";
@@ -236,6 +238,7 @@ public class TestSPApi {
 			public int updateTime;
 			public int updateSeqNo;
 			
+
 	
 			@Override
 			protected List getFieldOrder()
@@ -254,6 +257,8 @@ public class TestSPApi {
 		SPApiPrice price = new SPApiPrice();
 		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, "CLH7", price);
 		System.out.println("Get price by code: " + price.Last[0] + ", Open: " + price.Open);
+		currentBid = price.Bid[0];
+		currentAsk = price.Ask[0];
 		return i;
 	}
 	
@@ -281,9 +286,12 @@ public class TestSPApi {
         order.DecInPrice = 0;
 
         
-            order.OrderType = 6; //market order
-            order.Price = 0; // market price
-        
+            order.OrderType = 0; //limit
+            
+            if (buy_sell == 'B')
+            		order.Price = currentAsk; // market price
+            else
+            		order.Price = currentBid;
 
         rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order); 
         
