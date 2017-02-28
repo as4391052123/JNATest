@@ -38,7 +38,7 @@ public class TestSPApi {
     static String license = "58A665DE84D02";
     static String app_id  = "SPDEMO";
     static String userid = "DEMO201702141";
-    static String password = "vo2yv";
+    static String password = "00000000";
     static String server = "demo.spsystem.info";
 
 	public interface SPApiDll extends Library {
@@ -261,7 +261,7 @@ public class TestSPApi {
         SPApiOrder order = new SPApiOrder();
       
 
-        order.AccNo = userid.toCharArray();
+        order.AccNo = "AE201702".toCharArray();
         order.Initiator = userid.toCharArray();
         order.BuySell = buy_sell;
         
