@@ -57,7 +57,9 @@ public class TestSPApi {
 		
 		int SPAPI_SubscribePrice(String user_id, String prod_code, int mode);
 		
-		void SPAPI_RegisterLoadTradeReadyPush(RegisterTradeReport tradeReport);
+		void SPAPI_RegisterTradeReport(RegisterTradeReport tradeReport);
+		
+//		void SPAPI_RegisterLoadTradeReadyPush(RegisterTradeReport tradeReport);
 		
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 		
@@ -375,7 +377,7 @@ public class TestSPApi {
 			 
 			 SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);                                                          
 			 
-			 SPApiDll.INSTANCE.SPAPI_RegisterLoadTradeReadyPush(tradeReport);
+			 SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
 		   
 //			 SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 			
