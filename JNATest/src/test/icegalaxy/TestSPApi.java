@@ -269,7 +269,7 @@ public class TestSPApi {
         
         order.Qty = 2;
         
-        order.ProdCode = "MHIG7".toCharArray();
+        order.ProdCode = "CLJ7".toCharArray();
 
         order.Ref = "@JAVA#TRADERAPI".toCharArray();      
         order.Ref2 = "0".toCharArray();
@@ -286,6 +286,8 @@ public class TestSPApi {
         
 
         rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order); 
+        
+        System.out.println("Add order: " + buy_sell + "[" + rc + "]");
 
         return rc;
 //        if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add Order Success!"); }
@@ -410,7 +412,7 @@ public class TestSPApi {
 	    	   
 	       }
 	      
-	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLH7", 1);
+	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 1);
 	       
 	       System.out.println("Price subscribed: " + price);
 	       
@@ -434,7 +436,7 @@ public class TestSPApi {
 	       
 	       addOrder('S');
 	      
-	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLH7", 0);
+	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 0);
 	       try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
