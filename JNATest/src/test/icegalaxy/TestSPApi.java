@@ -26,6 +26,8 @@ public class TestSPApi {
 	
 	static int counter;
 	static long status = 0;
+	public static double currentBid;
+	public static double currentAsk;
 	
 //	 int port = 8080;
 //    String license = "76C2FB5B60006C7A";
@@ -57,7 +59,9 @@ public class TestSPApi {
 		
 		int SPAPI_SubscribePrice(String user_id, String prod_code, int mode);
 		
-		void SPAPI_RegisterLoadTradeReadyPush(RegisterTradeReport tradeReport);
+		void SPAPI_RegisterTradeReport(RegisterTradeReport tradeReport);
+		
+//		void SPAPI_RegisterLoadTradeReadyPush(RegisterTradeReport tradeReport);
 		
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 		
@@ -234,6 +238,7 @@ public class TestSPApi {
 			public int updateTime;
 			public int updateSeqNo;
 			
+
 	
 			@Override
 			protected List getFieldOrder()
@@ -252,6 +257,8 @@ public class TestSPApi {
 		SPApiPrice price = new SPApiPrice();
 		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, "CLH7", price);
 		System.out.println("Get price by code: " + price.Last[0] + ", Open: " + price.Open);
+		currentBid = price.Bid[0];
+		currentAsk = price.Ask[0];
 		return i;
 	}
 	
@@ -267,7 +274,7 @@ public class TestSPApi {
         
         order.Qty = 2;
         
-        order.ProdCode = "MHIG7".toCharArray();
+        order.ProdCode = "CLJ7".toCharArray();
 
         order.Ref = "@JAVA#TRADERAPI".toCharArray();      
         order.Ref2 = "0".toCharArray();
@@ -279,11 +286,16 @@ public class TestSPApi {
         order.DecInPrice = 0;
 
         
-            order.OrderType = 6; //market order
-            order.Price = 0; // market price
-        
+            order.OrderType = 0; //limit
+            
+            if (buy_sell == 'B')
+            		order.Price = currentAsk; // market price
+            else
+            		order.Price = currentBid;
 
         rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order); 
+        
+        System.out.println("Add order: " + buy_sell + "[" + rc + "]");
 
         return rc;
 //        if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add Order Success!"); }
@@ -375,7 +387,7 @@ public class TestSPApi {
 			 
 			 SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);                                                          
 			 
-			 SPApiDll.INSTANCE.SPAPI_RegisterLoadTradeReadyPush(tradeReport);
+			 SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
 		   
 //			 SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 			
@@ -408,7 +420,7 @@ public class TestSPApi {
 	    	   
 	       }
 	      
-	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLH7", 1);
+	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 1);
 	       
 	       System.out.println("Price subscribed: " + price);
 	       
@@ -432,7 +444,7 @@ public class TestSPApi {
 	       
 	       addOrder('S');
 	      
-	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLH7", 0);
+	       price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 0);
 	       try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
