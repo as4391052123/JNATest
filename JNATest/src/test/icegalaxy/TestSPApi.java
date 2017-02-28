@@ -170,20 +170,20 @@ public class TestSPApi
 		public class SPApiAccInfo extends Structure
 		{
 
-			double NAV;
-			double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin, MaxLoanLimit,
+			public double NAV;
+			public double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin, MaxLoanLimit,
 					TradingLimit, RawMargin, IMargin, MMargin, TodayTrans, LoanLimit, TotalFee, LoanToMR, LoanToMV;
 //			char[] AccName = new char[16];
-			char[] AccName = new char[16];
-			char[] BaseCcy = new char[4];
-			char[] MarginClass = new char[16];
-			char[] TradeClass = new char[16];
-			char[] ClientId = new char[16];
-			char[] AEId = new char[16];
-			String AccType;
-			String CtrlLevel;
-			String Active;
-			String MarginPeriod;
+			public char[] AccName = new char[16];
+			public char[] BaseCcy = new char[4];
+			public char[] MarginClass = new char[16];
+			public char[] TradeClass = new char[16];
+			public char[] ClientId = new char[16];
+			public char[] AEId = new char[16];
+			public String AccType;
+			public String CtrlLevel;
+			public String Active;
+			public String MarginPeriod;
 
 			@Override
 			protected List getFieldOrder()
