@@ -174,7 +174,7 @@ public class TestSPApi
 			double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin, MaxLoanLimit,
 					TradingLimit, RawMargin, IMargin, MMargin, TodayTrans, LoanLimit, TotalFee, LoanToMR, LoanToMV;
 //			char[] AccName = new char[16];
-			String AccName;
+			char[] AccName = new char[16];
 			char[] BaseCcy = new char[4];
 			char[] MarginClass = new char[16];
 			char[] TradeClass = new char[16];
@@ -301,7 +301,7 @@ public class TestSPApi
 		
 		int i = SPApiDll.INSTANCE.SPAPI_GetAccInfo(userid, info);
 		
-		System.out.println("Acc Name: " + info.AccName);
+		System.out.println("Acc Name: " + info.AccName[0] + info.AccName[1] + info.AccName[2]);
 		return i;
 		
 	}
