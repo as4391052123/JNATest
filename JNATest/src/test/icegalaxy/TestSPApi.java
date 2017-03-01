@@ -54,6 +54,8 @@ public class TestSPApi
 		int SPAPI_Initialize();
 
 		void SPAPI_Uninitialize();
+		
+		void SPAPI_GetAllTrades(String user_id, String acc_no, SPApiTrade[] trades);
 
 		int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
@@ -375,6 +377,22 @@ public class TestSPApi
 		// else { if (DllShowTextData != null) DllShowTextData("Add Order
 		// Failure! " + rc.ToString()); }
 
+	}
+	
+	public void displayAllTrades()
+	{
+		SPApiTrade[] trades = null;
+		
+		SPApiDll.INSTANCE.SPAPI_GetAllTrades(userid, userid, trades);
+		
+		for (int i=0; i<trades.length; i++)
+		{
+			
+			System.out.println("Rec No: " + trades[i].RecNo + ", Price: "
+					+ trades[i].Price + ", BuySell: " + trades[i].BuySell);
+			
+		}
+		
 	}
 
 	public static void main(String[] args)
