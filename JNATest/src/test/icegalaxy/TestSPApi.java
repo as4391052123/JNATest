@@ -31,6 +31,8 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
+	static String product = "HSIH7";
+	
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
 	// String app_id = "BS";
@@ -330,7 +332,7 @@ public class TestSPApi
 //		order.ProdCode = Native.toByteArray("CLJ7");
 		setBytes(order.AccNo, userid);
 		
-		setBytes(order.ProdCode, "CLJ7"); //need the replace necessary byte one by one, not setting the whole new array
+		setBytes(order.ProdCode, product); //need the replace necessary byte one by one, not setting the whole new array
 		
 //		order.Initiator = Native.toByteArray(userid + "  ");
 		setBytes(order.Initiator, userid);
@@ -514,7 +516,7 @@ public class TestSPApi
 
 		addOrder(Native.toByteArray("S")[0]);
 
-		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 0);
+		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
 		try
 		{
 			Thread.sleep(1000);
