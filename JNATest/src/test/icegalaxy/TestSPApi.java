@@ -327,15 +327,15 @@ public class TestSPApi
 		int rc;
 		SPApiOrder order = new SPApiOrder();
 
-		order.AccNo = Native.toByteArray(userid,"UTF8");
-		order.Initiator =  Native.toByteArray(userid,"UTF8");
+		order.AccNo = Native.toByteArray(userid);
+		order.Initiator =  Native.toByteArray(userid);
 		order.BuySell = buy_sell;
 
 		order.Qty = 2;
 
-		order.ProdCode = Native.toByteArray("CLJ7","UTF8");
+		order.ProdCode = Native.toByteArray("CLJ7");
 
-		order.Ref = Native.toByteArray("@JAVA#TRADERAPI","UTF8");
+		order.Ref = Native.toByteArray(userid);
 		order.Ref2 = Native.toByteArray("0");
 		order.GatewayCode = Native.toByteArray("");
 
