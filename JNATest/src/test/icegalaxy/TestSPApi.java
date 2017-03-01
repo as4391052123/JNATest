@@ -555,7 +555,7 @@ public class TestSPApi
 	{
 		 for (int i=0; i<s.length(); i++)
 		 {
-		        bytes[0] = (byte) s.charAt(i);
+		        bytes[i] = (byte) s.charAt(i);
 		   }
 
 		
