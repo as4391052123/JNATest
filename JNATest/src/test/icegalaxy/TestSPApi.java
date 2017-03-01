@@ -328,7 +328,7 @@ public class TestSPApi
 
 		// order.AccNo = Native.toByteArray("");
 //		order.ProdCode = Native.toByteArray("CLJ7");
-		
+		setBytes(order.AccNo, userid);
 		
 		setBytes(order.ProdCode, "CLJ7"); //need the replace necessary byte one by one, not setting the whole new array
 		
