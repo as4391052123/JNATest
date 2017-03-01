@@ -480,7 +480,7 @@ public class TestSPApi
 		System.out.println("Price subscribed: " + price);
 
 	
-		byte b = 66;
+		byte b = 102;
 
 		addOrder(b);
 
