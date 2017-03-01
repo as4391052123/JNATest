@@ -521,7 +521,7 @@ public class TestSPApi
 				break;
 		}
 
-		
+		System.out.println("AccInfo: " + getAccInfo());
 
 		addOrder(Native.toByteArray("B")[0]);
 
@@ -543,7 +543,7 @@ public class TestSPApi
 				break;
 		}
 
-		getPriceByCode();
+//		getPriceByCode();
 
 		System.out.println("AccInfo: " + getAccInfo());
 
@@ -568,6 +568,7 @@ public class TestSPApi
 				break;
 		}
 		
+		System.out.println("AccInfo: " + getAccInfo());
 //		displayAllTrades();
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
