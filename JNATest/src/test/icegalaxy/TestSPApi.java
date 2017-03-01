@@ -1,5 +1,6 @@
 package test.icegalaxy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static String product = "HSIH7";
+	static String product = "CLJ7";
 	
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
@@ -55,7 +56,7 @@ public class TestSPApi
 
 		void SPAPI_Uninitialize();
 		
-		void SPAPI_GetAllTrades(String user_id, String acc_no, SPApiTrade[] trades);
+		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 
 		int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
@@ -353,7 +354,7 @@ public class TestSPApi
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
-		order.DecInPrice = 0;
+		order.DecInPrice = 2;
 
 		order.OrderType = 0; // limit
 
@@ -379,17 +380,19 @@ public class TestSPApi
 
 	}
 	
-	public void displayAllTrades()
+	public static void displayAllTrades()
 	{
-		SPApiTrade[] trades = null;
+		ArrayList<SPApiTrade> trades = null;
 		
 		SPApiDll.INSTANCE.SPAPI_GetAllTrades(userid, userid, trades);
 		
-		for (int i=0; i<trades.length; i++)
+		System.out.println("Trying to display all trades");
+		
+		for (int i=0; i<trades.size(); i++)
 		{
 			
-			System.out.println("Rec No: " + trades[i].RecNo + ", Price: "
-					+ trades[i].Price + ", BuySell: " + trades[i].BuySell);
+			System.out.println("Rec No: " + trades.get(i).RecNo + ", Price: "
+					+ trades.get(i).Price + ", BuySell: " + trades.get(i).BuySell);
 			
 		}
 		
@@ -564,6 +567,8 @@ public class TestSPApi
 			if (counter > 10)
 				break;
 		}
+		
+		displayAllTrades();
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
 		try
