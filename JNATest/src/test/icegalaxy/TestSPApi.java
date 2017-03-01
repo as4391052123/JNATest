@@ -356,9 +356,9 @@ public class TestSPApi
 		// System.out.println("order.Initiator: " +
 		// Native.toString(order.Initiator));
 
-		// if (new Char(buy_sell) == 'B')
-		// order.Price = currentAsk; // market price
-		// else
+		 if (buy_sell == 'B')
+		 order.Price = currentAsk; // market price
+		 else
 		order.Price = currentBid;
 
 		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
