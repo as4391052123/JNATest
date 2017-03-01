@@ -310,6 +310,7 @@ public class TestSPApi
 		System.out.println("AEID: " + Native.toString(info.AEId));
 		System.out.println("ClientID: " + Native.toString(info.ClientId));
 		System.out.println("AccName: " + Native.toString(info.AccName));
+		System.out.println("Cash Bal: " + info.CashBal);
 
 		return i;
 
@@ -546,7 +547,6 @@ public class TestSPApi
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		char s = 'S';
 
 		addOrder(Native.toByteArray("S")[0]);
 		
@@ -568,7 +568,7 @@ public class TestSPApi
 				break;
 		}
 		
-		displayAllTrades();
+//		displayAllTrades();
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
 		try
@@ -576,7 +576,6 @@ public class TestSPApi
 			Thread.sleep(1000);
 		} catch (InterruptedException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
