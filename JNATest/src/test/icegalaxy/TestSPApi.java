@@ -329,7 +329,8 @@ public class TestSPApi
 		// order.AccNo = Native.toByteArray("");
 //		order.ProdCode = Native.toByteArray("CLJ7");
 		
-		setBytes(order.ProdCode, "CLJ7");
+		
+		setBytes(order.ProdCode, "CLJ7"); //need the replace necessary byte one by one, not setting the whole new array
 		
 //		order.Initiator = Native.toByteArray(userid + "  ");
 		setBytes(order.Initiator, userid);
@@ -338,12 +339,15 @@ public class TestSPApi
 
 		order.Qty = 2;
 
-		// order.Ref = Native.toByteArray(userid);
+		setBytes(order.Ref, "Java@SPAPI"); 
+		setBytes(order.Ref2, "0"); 
 		// order.Ref2 = Native.toByteArray("0");
 		// order.GatewayCode = Native.toByteArray("");
+		
 
 		order.CondType = 0; // normal type
-		// order.ClOrderId = Native.toByteArray("0");
+//		 order.ClOrderId = Native.toByteArray("0");
+		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
 		order.DecInPrice = 2;
 
