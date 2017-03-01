@@ -406,17 +406,9 @@ public class TestSPApi
 			}
 		};
 
-		RegisterPriceUpdate priceUpdate = new RegisterPriceUpdate()
-		{
-
-			@Override
-			public void invoke(SPApiPrice price)
-			{
-				System.out.println("Lastest Deal: " + price.Last[0]);
-
-			}
-
-		};
+		//Try using lambda
+		RegisterPriceUpdate priceUpdate = (last) -> System.out.println("Lastest Deal: " + last.Last[0]);
+	
 
 		RegisterConn conn = new RegisterConn()
 		{
