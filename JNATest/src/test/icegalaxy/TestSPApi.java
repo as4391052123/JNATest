@@ -268,7 +268,7 @@ public class TestSPApi
 			public byte[] Ref2 = new byte[16];
 			public byte[] GatewayCode = new byte[16];
 			public byte[] ClOrderId = new byte[40];
-			public byte[] BuySell = new byte[16];
+			public byte BuySell;
 			public char StopType;
 			public char OpenClose;
 			public int CondType;
@@ -319,7 +319,7 @@ public class TestSPApi
 		return i;
 	}
 
-	public static int addOrder(byte[] buy_sell)
+	public static int addOrder(byte buy_sell)
 	{
 		
 	
@@ -480,8 +480,9 @@ public class TestSPApi
 		System.out.println("Price subscribed: " + price);
 
 	
+		byte b = 66;
 
-		addOrder(Native.toByteArray("B", "UTF8"));
+		addOrder(b);
 
 		while (true)
 		{
@@ -503,7 +504,9 @@ public class TestSPApi
 		
 		System.out.println("AccInfo: " + getAccInfo());
 
-		addOrder(Native.toByteArray("S", "UTF8"));
+		byte s = 83;
+		
+		addOrder(s);
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 0);
 		try
