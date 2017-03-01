@@ -57,6 +57,8 @@ public class TestSPApi
 		void SPAPI_Uninitialize();
 		
 		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
+		
+		int SPAPI_ActivateAllOrders(String user_id, String acc_no);
 
 		int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
@@ -310,7 +312,7 @@ public class TestSPApi
 		System.out.println("AEID: " + Native.toString(info.AEId));
 		System.out.println("ClientID: " + Native.toString(info.ClientId));
 		System.out.println("AccName: " + Native.toString(info.AccName));
-		System.out.println("Cash Bal: " + info.CashBal);
+		System.out.println("Buying Power: " + info.BuyingPower);
 
 		return i;
 
@@ -326,11 +328,11 @@ public class TestSPApi
 		return i;
 	}
 
-	public static int addOrder(byte buy_sell)
+	public static int addOrder(SPApiOrder order, byte buy_sell)
 	{
 
 		int rc;
-		SPApiOrder order = new SPApiOrder();
+		//SPApiOrder order = new SPApiOrder();
 
 		// order.AccNo = Native.toByteArray("");
 //		order.ProdCode = Native.toByteArray("CLJ7");
@@ -349,15 +351,17 @@ public class TestSPApi
 		setBytes(order.Ref2, "0"); 
 		// order.Ref2 = Native.toByteArray("0");
 		// order.GatewayCode = Native.toByteArray("");
-		
+		setBytes(order.GatewayCode, "10.0.0.1");
 
 		order.CondType = 0; // normal type
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
 		order.DecInPrice = 2;
-
+		order.OpenClose = '\0';
+		order.StopType = '0';
 		order.OrderType = 0; // limit
+		order.OrderOptions = 0;
 
 		// System.out.println("order.Initiator: " +
 		// Native.toString(order.Initiator));
@@ -372,7 +376,11 @@ public class TestSPApi
 		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
 
 		System.out.println("Add order: " + buy_sell + "[" + rc + "]");
+		
+		System.out.println("Activate all orders: [" + SPApiDll.INSTANCE.SPAPI_ActivateAllOrders(userid, userid) + "]");
 
+		System.out.println("order status: " + order.Status);
+		
 		return rc;
 		// if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add
 		// Order Success!"); }
@@ -407,6 +415,8 @@ public class TestSPApi
 		int price = 1;
 		int login = 1;
 		int logout = 1;
+		
+		SPApiOrder order = new SPApiOrder();
 
 		RegisterTradeReport tradeReport = new RegisterTradeReport()
 		{
@@ -429,7 +439,7 @@ public class TestSPApi
 		};
 
 		//Try using lambda
-		RegisterPriceUpdate priceUpdate = (last) -> System.out.println("Lastest Deal: " + last.Last[0]);
+		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + " ");
 	
 
 		RegisterConn conn = new RegisterConn()
@@ -516,14 +526,14 @@ public class TestSPApi
 				e.printStackTrace();
 			}
 			counter++;
-			System.out.println("counter: " + counter);
+		//	System.out.println("counter: " + counter);
 			if (counter > 10)
 				break;
 		}
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		addOrder(Native.toByteArray("B")[0]);
+		addOrder(order, Native.toByteArray("B")[0]);
 
 		counter = 0;
 		
@@ -538,7 +548,7 @@ public class TestSPApi
 				e.printStackTrace();
 			}
 			counter++;
-			System.out.println("counter: " + counter);
+			System.out.println("B order status: " + order.Status);
 			if (counter > 10)
 				break;
 		}
@@ -548,7 +558,7 @@ public class TestSPApi
 		System.out.println("AccInfo: " + getAccInfo());
 
 
-		addOrder(Native.toByteArray("S")[0]);
+		addOrder(order, Native.toByteArray("S")[0]);
 		
 		counter = 0;
 		
@@ -563,7 +573,7 @@ public class TestSPApi
 				e.printStackTrace();
 			}
 			counter++;
-			System.out.println("counter: " + counter);
+			System.out.println("S order status: " + order.Status);
 			if (counter > 10)
 				break;
 		}
