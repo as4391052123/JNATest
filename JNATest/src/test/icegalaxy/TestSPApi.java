@@ -327,27 +327,28 @@ public class TestSPApi
 		int rc;
 		SPApiOrder order = new SPApiOrder();
 
-		order.AccNo = Native.toByteArray(userid);
-		order.Initiator =  Native.toByteArray(userid);
+	//	order.AccNo = Native.toByteArray("");
+		order.ProdCode = Native.toByteArray("CLJ7           ");
+		order.Initiator =  Native.toByteArray(userid+"  ");
 		order.BuySell = buy_sell;
 
 		order.Qty = 2;
 
-		order.ProdCode = Native.toByteArray("CLJ7");
+		
 
-		order.Ref = Native.toByteArray(userid);
-		order.Ref2 = Native.toByteArray("0");
-		order.GatewayCode = Native.toByteArray("");
+	//	order.Ref = Native.toByteArray(userid);
+	//	order.Ref2 = Native.toByteArray("0");
+		//order.GatewayCode = Native.toByteArray("");
 
 		order.CondType = 0; // normal type
-		order.ClOrderId = Native.toByteArray("0");
+	//	order.ClOrderId = Native.toByteArray("0");
 		order.ValidType = 0;
 		order.DecInPrice = 2;
 
 		order.OrderType = 0; // limit
 		
 		
-		System.out.println("order.Initiator: " + Native.toString(order.Initiator));
+	//	System.out.println("order.Initiator: " + Native.toString(order.Initiator));
 
 	//	if (new Char(buy_sell) == 'B')
 	//		order.Price = currentAsk; // market price
@@ -480,9 +481,9 @@ public class TestSPApi
 		System.out.println("Price subscribed: " + price);
 
 	
-		byte b = 102;
+		char b = 'B';
 
-		addOrder(b);
+		addOrder(Native.toByteArray("B")[0]);
 
 		while (true)
 		{
@@ -504,9 +505,9 @@ public class TestSPApi
 		
 		System.out.println("AccInfo: " + getAccInfo());
 
-		byte s = 83;
+		char s = 'S';
 		
-		addOrder(s);
+		addOrder(Native.toByteArray("S")[0]);
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 0);
 		try
