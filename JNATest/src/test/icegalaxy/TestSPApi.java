@@ -315,7 +315,7 @@ public class TestSPApi
 	public static int getPriceByCode()
 	{
 		SPApiPrice price = new SPApiPrice();
-		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, "CLJ7", price);
+		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, product, price);
 		System.out.println("Get price by code: " + price.Last[0] + ", Open: " + price.Open);
 		currentBid = price.Bid[0];
 		currentAsk = price.Ask[0];
@@ -351,17 +351,19 @@ public class TestSPApi
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
-		order.DecInPrice = 2;
+		order.DecInPrice = 0;
 
 		order.OrderType = 0; // limit
 
 		// System.out.println("order.Initiator: " +
 		// Native.toString(order.Initiator));
+		
+		getPriceByCode();
 
 		 if (buy_sell == 'B')
-		 order.Price = currentAsk; // market price
+			 order.Price = currentAsk; // market price
 		 else
-		order.Price = currentBid;
+			 order.Price = currentBid;
 
 		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
 
@@ -484,14 +486,33 @@ public class TestSPApi
 
 		}
 
-		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 1);
+		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 1);
 
 		System.out.println("Price subscribed: " + price);
+		
 
-		char b = 'B';
+		while (true)
+		{
+			try
+			{
+				Thread.sleep(1000);
+			} catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			counter++;
+			System.out.println("counter: " + counter);
+			if (counter > 10)
+				break;
+		}
+
+		
 
 		addOrder(Native.toByteArray("B")[0]);
 
+		counter = 0;
+		
 		while (true)
 		{
 			try
@@ -515,6 +536,24 @@ public class TestSPApi
 		char s = 'S';
 
 		addOrder(Native.toByteArray("S")[0]);
+		
+		counter = 0;
+		
+		while (true)
+		{
+			try
+			{
+				Thread.sleep(1000);
+			} catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			counter++;
+			System.out.println("counter: " + counter);
+			if (counter > 10)
+				break;
+		}
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
 		try
