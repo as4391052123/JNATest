@@ -52,7 +52,7 @@ public class TestSPApi
 		int SPAPI_Initialize();
 
 		void SPAPI_Uninitialize();
-		
+
 		int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
 		int SPAPI_GetPriceByCode(String user_id, String prod_code, SPApiPrice price);
@@ -171,9 +171,10 @@ public class TestSPApi
 		{
 
 			public double NAV;
-			public double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin, MaxLoanLimit,
-					TradingLimit, RawMargin, IMargin, MMargin, TodayTrans, LoanLimit, TotalFee, LoanToMR, LoanToMV;
-//			char[] AccName = new char[16];
+			public double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin,
+					MaxLoanLimit, TradingLimit, RawMargin, IMargin, MMargin, TodayTrans, LoanLimit, TotalFee, LoanToMR,
+					LoanToMV;
+			// char[] AccName = new char[16];
 			public byte[] AccName = new byte[16];
 			public byte[] BaseCcy = new byte[4];
 			public byte[] MarginClass = new byte[16];
@@ -293,20 +294,20 @@ public class TestSPApi
 
 		}
 	}
-	
+
 	public static int getAccInfo()
 	{
-		
+
 		SPApiAccInfo info = new SPApiAccInfo();
-		
+
 		int i = SPApiDll.INSTANCE.SPAPI_GetAccInfo(userid, info);
-		
+
 		System.out.println("AEID: " + Native.toString(info.AEId));
 		System.out.println("ClientID: " + Native.toString(info.ClientId));
 		System.out.println("AccName: " + Native.toString(info.AccName));
-		
+
 		return i;
-		
+
 	}
 
 	public static int getPriceByCode()
@@ -321,39 +322,40 @@ public class TestSPApi
 
 	public static int addOrder(byte buy_sell)
 	{
-		
-	
-		
+
 		int rc;
 		SPApiOrder order = new SPApiOrder();
 
-	//	order.AccNo = Native.toByteArray("");
-		order.ProdCode = Native.toByteArray("CLJ7           ");
-		order.Initiator =  Native.toByteArray(userid+"  ");
+		// order.AccNo = Native.toByteArray("");
+//		order.ProdCode = Native.toByteArray("CLJ7");
+		
+		setBytes(order.ProdCode, "CLJ7");
+		
+//		order.Initiator = Native.toByteArray(userid + "  ");
+		setBytes(order.Initiator, userid);
+		
 		order.BuySell = buy_sell;
 
 		order.Qty = 2;
 
-		
-
-	//	order.Ref = Native.toByteArray(userid);
-	//	order.Ref2 = Native.toByteArray("0");
-		//order.GatewayCode = Native.toByteArray("");
+		// order.Ref = Native.toByteArray(userid);
+		// order.Ref2 = Native.toByteArray("0");
+		// order.GatewayCode = Native.toByteArray("");
 
 		order.CondType = 0; // normal type
-	//	order.ClOrderId = Native.toByteArray("0");
+		// order.ClOrderId = Native.toByteArray("0");
 		order.ValidType = 0;
 		order.DecInPrice = 2;
 
 		order.OrderType = 0; // limit
-		
-		
-	//	System.out.println("order.Initiator: " + Native.toString(order.Initiator));
 
-	//	if (new Char(buy_sell) == 'B')
-	//		order.Price = currentAsk; // market price
-	//	else
-			order.Price = currentBid;
+		// System.out.println("order.Initiator: " +
+		// Native.toString(order.Initiator));
+
+		// if (new Char(buy_sell) == 'B')
+		// order.Price = currentAsk; // market price
+		// else
+		order.Price = currentBid;
 
 		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
 
@@ -480,7 +482,6 @@ public class TestSPApi
 
 		System.out.println("Price subscribed: " + price);
 
-	
 		char b = 'B';
 
 		addOrder(Native.toByteArray("B")[0]);
@@ -500,13 +501,13 @@ public class TestSPApi
 			if (counter > 10)
 				break;
 		}
-		
+
 		getPriceByCode();
-		
+
 		System.out.println("AccInfo: " + getAccInfo());
 
 		char s = 'S';
-		
+
 		addOrder(Native.toByteArray("S")[0]);
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, "CLJ7", 0);
@@ -540,7 +541,7 @@ public class TestSPApi
 
 		System.out.println("logout: " + logout);
 
-		 SPApiDll.INSTANCE.SPAPI_Uninitialize();
+		SPApiDll.INSTANCE.SPAPI_Uninitialize();
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);
@@ -548,6 +549,16 @@ public class TestSPApi
 		// System.out.println("logout: " + logout);
 		System.out.println("uninit: " + un);
 
+	}
+
+	public static void setBytes(byte[] bytes, String s)
+	{
+		 for (int i=0; i<s.length(); i++)
+		 {
+		        bytes[0] = (byte) s.charAt(i);
+		   }
+
+		
 	}
 
 }
