@@ -13,6 +13,7 @@ import com.sun.jna.Native;
 
 import com.sun.jna.Structure;
 
+import test.icegalaxy.TestSPApi.SPApiDll.RegisterOrderB4;
 import test.icegalaxy.TestSPApi.SPApiDll.AccLoginReply;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterConn;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterError;
@@ -33,7 +34,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static String product = "HSIH7";
+	static byte[] product = getBytes("HSIH7", 16);
 	
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
@@ -63,7 +64,7 @@ public class TestSPApi
 
 		int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
-		int SPAPI_GetPriceByCode(String user_id, String prod_code, SPApiPrice price);
+		int SPAPI_GetPriceByCode(String user_id, byte[] prod_code, SPApiPrice price);
 
 		void SPAPI_SetLoginInfo(String server, int port, String license, String app_id, String userid, String password);
 
@@ -73,7 +74,7 @@ public class TestSPApi
 
 		int SPAPI_AddOrder(SPApiOrder order);
 
-		int SPAPI_SubscribePrice(String user_id, String prod_code, int mode);
+		int SPAPI_SubscribePrice(String user_id, byte[] prod_code, int mode);
 
 		void SPAPI_RegisterTradeReport(RegisterTradeReport tradeReport);
 
@@ -81,6 +82,8 @@ public class TestSPApi
 		// tradeReport);
 		
 		void SPAPI_RegisterOrderRequestFailed(RegisterOrderFail orderFail);
+		
+		void SPAPI_RegisterOrderBeforeSendReport(RegisterOrderB4 orderB4);
 
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 
@@ -95,6 +98,11 @@ public class TestSPApi
 		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
 
 		// f void SPAPI_RegisterConnectionErrorUpdate(RegisterError error);
+		
+		public interface RegisterOrderB4 extends Callback
+		{
+			void invoke(SPApiOrder order);
+		}
 
 		public interface RegisterOrderFail extends Callback
 		{
@@ -237,8 +245,8 @@ public class TestSPApi
 			public double TurnoverVol;
 			public double TurnoverAmt;
 			public int OpenInt;
-			public char[] ProdCode = new char[16];
-			public char[] ProdName = new char[40];
+			public byte[] ProdCode = new byte[16];
+			public byte[] ProdName = new byte[40];
 			public byte DecInPrice;
 			public int ExstateNo;
 			public int TradeStateNo;
@@ -346,7 +354,7 @@ public class TestSPApi
 //		order.ProdCode = Native.toByteArray("CLJ7");
 		setBytes(order.AccNo, userid);
 		
-		setBytes(order.ProdCode, product); //need the replace necessary byte one by one, not setting the whole new array
+		order.ProdCode = product; //need the replace necessary byte one by one, not setting the whole new array
 		
 //		order.Initiator = Native.toByteArray(userid + "  ");
 		setBytes(order.Initiator, userid);
@@ -429,6 +437,8 @@ public class TestSPApi
 		int logout = 1;
 		
 		SPApiOrder order = new SPApiOrder();
+		
+		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
 
 		RegisterTradeReport tradeReport = new RegisterTradeReport()
 		{
@@ -499,6 +509,8 @@ public class TestSPApi
 		SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
 		
 		SPApiDll.INSTANCE.SPAPI_RegisterOrderRequestFailed(orderFail);
+		
+		SPApiDll.INSTANCE.SPAPI_RegisterOrderBeforeSendReport(orderB4);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 
@@ -645,6 +657,19 @@ public class TestSPApi
 		        bytes[i] = (byte) s.charAt(i);
 		   }
 
+		
+	}
+	
+	public static byte[] getBytes(String s, int size){
+		
+		byte[] bytes = new byte[size];
+		
+		for (int i=0; i<s.length(); i++)
+		{
+			bytes[i] = (byte) s.charAt(i);
+			
+		}
+		return bytes;
 		
 	}
 
