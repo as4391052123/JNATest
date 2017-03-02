@@ -359,7 +359,7 @@ public class TestSPApi
 		setBytes(order.Ref2, "0"); 
 		// order.Ref2 = Native.toByteArray("0");
 		// order.GatewayCode = Native.toByteArray("");
-		setBytes(order.GatewayCode, "10.0.0.1");
+		setBytes(order.GatewayCode, "");
 
 		order.CondType = '0'; // normal type
 //		 order.ClOrderId = Native.toByteArray("0");
@@ -370,7 +370,7 @@ public class TestSPApi
 		
 		
 		order.DecInPrice = dec;
-		order.OpenClose = '\0';
+//		order.OpenClose = '\0';
 		order.StopType = '0';
 		order.OrderType = '0'; // limit
 		order.OrderOptions = 0;
@@ -488,7 +488,7 @@ public class TestSPApi
 		};
 		
 		RegisterOrderFail orderFail = (action, orderx, err_code, err_msg) -> System.out.println("Action no: " + action + 
-				", order status: " + orderx.Status + ", Error msg: " + err_msg);
+				", order status: " + orderx.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
 
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
 
