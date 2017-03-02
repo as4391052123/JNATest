@@ -287,10 +287,10 @@ public class TestSPApi
 			public byte BuySell;
 			public char StopType;
 			public char OpenClose;
-			public int CondType;
-			public int OrderType;
-			public int ValidType;
-			public int Status;
+			public byte CondType;
+			public byte OrderType;
+			public byte ValidType;
+			public byte Status;
 			public byte DecInPrice;
 			public int OrderAction;
 			public int updateTime;
@@ -365,7 +365,11 @@ public class TestSPApi
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
-		order.DecInPrice = (byte) '2';
+		
+		byte dec = 2;
+		
+		
+		order.DecInPrice = dec;
 		order.OpenClose = '\0';
 		order.StopType = '0';
 		order.OrderType = 0; // limit
