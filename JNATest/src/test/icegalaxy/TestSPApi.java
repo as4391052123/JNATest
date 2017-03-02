@@ -17,6 +17,7 @@ import test.icegalaxy.TestSPApi.SPApiDll.AccLoginReply;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterConn;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterError;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterLoginReply;
+import test.icegalaxy.TestSPApi.SPApiDll.RegisterOrderFail;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterPriceUpdate;
 import test.icegalaxy.TestSPApi.SPApiDll.RegisterTradeReport;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiAccInfo;
@@ -78,6 +79,8 @@ public class TestSPApi
 
 		// void SPAPI_RegisterLoadTradeReadyPush(RegisterTradeReport
 		// tradeReport);
+		
+		void SPAPI_RegisterOrderRequestFailed(RegisterOrderFail orderFail);
 
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 
@@ -93,6 +96,11 @@ public class TestSPApi
 
 		// f void SPAPI_RegisterConnectionErrorUpdate(RegisterError error);
 
+		public interface RegisterOrderFail extends Callback
+		{
+			void invoke(int action, SPApiOrder order, long err_code, String err_msg);
+		}
+		
 		public interface RegisterTradeReport extends Callback
 		{
 			void invoke(long rec_no, SPApiTrade trade);
@@ -474,6 +482,9 @@ public class TestSPApi
 
 			}
 		};
+		
+		RegisterOrderFail orderFail = (action, orderx, err_code, err_msg) -> System.out.println("Action no: " + action + 
+				", order status: " + orderx.Status + ", Error msg: " + err_msg);
 
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
 
@@ -482,6 +493,8 @@ public class TestSPApi
 		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
 
 		SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
+		
+		SPApiDll.INSTANCE.SPAPI_RegisterOrderRequestFailed(orderFail);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 
