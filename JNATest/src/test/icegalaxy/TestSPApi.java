@@ -293,8 +293,8 @@ public class TestSPApi
 			public byte[] GatewayCode = new byte[16];
 			public byte[] ClOrderId = new byte[40];
 			public byte BuySell;
-			public char StopType;
-			public char OpenClose;
+			public byte StopType;
+			public byte OpenClose;
 			public byte CondType;
 			public byte OrderType;
 			public byte ValidType;
@@ -374,14 +374,14 @@ public class TestSPApi
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
 		
-		byte dec = 123;
+		byte dec = 48;
 		
 		
 		order.DecInPrice = dec;
 //		order.OpenClose = '\0';
-		order.StopType = '0';
-		order.OrderType = '0'; // limit
-		order.OrderOptions = 0;
+//		order.StopType = '0';
+		order.OrderType = 48; // limit
+//		order.OrderOptions = 0;
 
 		// System.out.println("order.Initiator: " +
 		// Native.toString(order.Initiator));
