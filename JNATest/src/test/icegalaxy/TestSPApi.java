@@ -577,7 +577,7 @@ public class TestSPApi
 				e.printStackTrace();
 			}
 			counter++;
-			System.out.println("B order status: " + order.Status);
+//			System.out.println("B order status: " + order.Status);
 			if (counter > 10)
 				break;
 		}
@@ -602,7 +602,7 @@ public class TestSPApi
 				e.printStackTrace();
 			}
 			counter++;
-			System.out.println("S order status: " + order.Status);
+//			System.out.println("S order status: " + order.Status);
 			if (counter > 10)
 				break;
 		}
