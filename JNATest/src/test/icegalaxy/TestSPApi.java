@@ -283,7 +283,7 @@ public class TestSPApi
 			public int OrderType;
 			public int ValidType;
 			public int Status;
-			public int DecInPrice;
+			public byte DecInPrice;
 			public int OrderAction;
 			public int updateTime;
 			public int updateSeqNo;
@@ -357,7 +357,7 @@ public class TestSPApi
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
-		order.DecInPrice = 2;
+		order.DecInPrice = (byte) '2';
 		order.OpenClose = '\0';
 		order.StopType = '0';
 		order.OrderType = 0; // limit
