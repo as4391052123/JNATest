@@ -361,18 +361,18 @@ public class TestSPApi
 		// order.GatewayCode = Native.toByteArray("");
 		setBytes(order.GatewayCode, "10.0.0.1");
 
-		order.CondType = 0; // normal type
+		order.CondType = '0'; // normal type
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
 		
-		byte dec = 2;
+		byte dec = 50;
 		
 		
 		order.DecInPrice = dec;
 		order.OpenClose = '\0';
 		order.StopType = '0';
-		order.OrderType = 0; // limit
+		order.OrderType = '0'; // limit
 		order.OrderOptions = 0;
 
 		// System.out.println("order.Initiator: " +
