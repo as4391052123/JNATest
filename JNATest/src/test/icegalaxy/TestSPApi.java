@@ -369,7 +369,7 @@ public class TestSPApi
 		// order.GatewayCode = Native.toByteArray("");
 		setBytes(order.GatewayCode, "");
 
-		order.CondType = '0'; // normal type
+		order.CondType = 48; // normal type
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
@@ -377,14 +377,12 @@ public class TestSPApi
 		byte dec = 48;
 		
 		
-		order.DecInPrice = dec;
+		order.DecInPrice = '0';
 //		order.OpenClose = '\0';
 //		order.StopType = '0';
 		order.OrderType = 48; // limit
 //		order.OrderOptions = 0;
 
-		// System.out.println("order.Initiator: " +
-		// Native.toString(order.Initiator));
 		
 		getPriceByCode();
 
@@ -397,9 +395,9 @@ public class TestSPApi
 
 		System.out.println("Add order: " + buy_sell + "[" + rc + "]");
 		
-		System.out.println("Activate all orders: [" + SPApiDll.INSTANCE.SPAPI_ActivateAllOrders(userid, userid) + "]");
+//		System.out.println("Activate all orders: [" + SPApiDll.INSTANCE.SPAPI_ActivateAllOrders(userid, userid) + "]");
 
-		System.out.println("order status: " + order.Status);
+//		System.out.println("order status: " + order.Status);
 		
 		return rc;
 		// if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add
