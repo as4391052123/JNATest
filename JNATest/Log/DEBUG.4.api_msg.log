@@ -1,22 +1,25 @@
-2017-02-16T23:54:11.532529: Set Connect (Host: futures.bsgroup.com.hk:8080)...
-2017-02-16T23:54:11.533524: Logging in ...
-2017-02-16T23:54:12.946076: Login OK !>>> (UserId#T865829 systemTime:1487260453)systemid:PROXY0
-2017-02-16T23:54:12.950076: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/
-2017-02-16T23:54:12.950076: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
-2017-02-16T23:54:12.950076: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
-2017-02-16T23:54:12.950076: WebLink: Id>>> 3 ,URL:http://spsystem.info/splinker/index.php?action=splogo
-2017-02-16T23:54:12.950076: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
-2017-02-16T23:54:12.950076: WebLink: Id>>> 9 ,URL:https://mobilefs1.bsgroup.com.hk/sptrader/
-2017-02-16T23:54:12.950076: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
-2017-02-16T23:54:12.951077: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
-2017-02-16T23:54:12.951077: WebLink: Id>>> 24 ,URL:103.241.165.206:80/spmobile_api/spwebapi/
-2017-02-16T23:54:12.951077: WebLink: Id>>> 28 ,URL:http://spsystem.info/spmobile_service/spwebapi
-2017-02-16T23:54:12.951077: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
-2017-02-16T23:54:12.966173: WebLink: Id>>> 30 ,URL:http://spsystem.info/document/
-2017-02-16T23:54:12.966173: WebLink: Id>>> 32 ,URL:https://mobilef.bsgroup.com.hk/spmobile_api/spwebapi/
-2017-02-16T23:54:12.966173: WebLink: Id>>> 33 ,URL:http://profile1.spsystem.info
-2017-02-16T23:54:12.966173: WebLink: Id>>> 34 ,URL:http://profile2.spsystem.info
-2017-02-16T23:54:12.967172: WebLink: Id>>> 35 ,URL:http://profile3.spsystem.info
-2017-02-16T23:54:12.967172: WebLink: Id>>> 36 ,URL:http://profile4.spsystem.info
-2017-02-16T23:54:12.967172: WebLink: Id>>> 37 ,URL:http://profile5.spsystem.info
-2017-02-16T23:54:12.968175: WebLink: Id>>> 100 ,URL:
+2017-03-02T01:35:56.207159: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-02T01:35:56.208161: Logging in ...
+2017-03-02T01:35:57.395548: Login OK !>>> (UserId#DEMO201702141 systemTime:1488389757)systemid:PROXY0
+2017-03-02T01:35:57.397052: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-02T01:35:57.397052: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-02T01:35:57.397052: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-02T01:35:57.397052: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-02T01:35:57.397052: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-02T01:35:57.397554: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-02T01:35:57.397554: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-02T01:35:57.397554: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-02T01:35:57.397554: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-02T01:35:57.397554: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-02T01:35:57.405872: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-02T01:35:57.405872: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-02T01:35:57.405872: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-02T01:35:57.405872: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-02T01:35:57.405872: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-02T01:35:57.405872: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-02T01:35:57.405872: WebLink: Id>>> 100 ,URL:
+2017-03-02T01:36:09.226188: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=CLJ7, BS=B, 0@53.81, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-02T01:36:09.227692: Activate All Order Acc#DEMO201702141 ...
+2017-03-02T01:36:20.240072: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=CLJ7, BS=S, 0@53.77, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-02T01:36:20.245581: Activate All Order Acc#DEMO201702141 ...
+2017-03-02T01:36:32.254057: Start Logout ...

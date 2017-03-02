@@ -941,3 +941,299 @@
 2017-03-01T13:23:19.623527: Add Order:User#DEMO201702141  , Acc#, ProdCode=CLJ7           , BS=B, 0@0, Ref(,), CliOrd#
 2017-03-01T13:23:30.653698: Add Order:User#DEMO201702141  , Acc#, ProdCode=CLJ7           , BS=S, 0@54.03, Ref(,), CliOrd#
 2017-03-01T13:23:31.656210: Start Logout ...
+2017-03-01T15:02:51.201944: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:02:51.201944: Logging in ...
+2017-03-01T15:02:52.558301: Login OK !>>> (UserId#DEMO201702141 systemTime:1488351770)systemid:PROXY0
+2017-03-01T15:02:52.565321: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:02:52.565321: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:02:52.565321: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:02:52.565321: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:02:52.565822: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:02:52.565822: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:02:52.565822: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:02:52.565822: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:02:52.565822: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:02:52.565822: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:02:52.567130: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:02:52.567130: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:02:52.567130: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:02:52.576388: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:02:52.576388: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:02:52.576388: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:02:52.576388: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:02:53.209777: Add Order:User#1, Acc#, ProdCode=7, BS=B, 0@0, Ref(,), CliOrd#
+2017-03-01T15:03:04.238332: Add Order:User#1, Acc#, ProdCode=7, BS=S, 0@53.99, Ref(,), CliOrd#
+2017-03-01T15:03:05.243385: Start Logout ...
+2017-03-01T15:05:16.062385: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:05:16.062887: Logging in ...
+2017-03-01T15:05:17.323944: Login OK !>>> (UserId#DEMO201702141 systemTime:1488351915)systemid:PROXY0
+2017-03-01T15:05:17.325945: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:05:17.325945: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:05:17.326445: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:05:17.326445: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:05:17.326445: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:05:17.326946: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:05:17.326946: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:05:17.326946: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:05:17.326946: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:05:17.327448: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:05:17.332753: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:05:17.332753: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:05:17.333255: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:05:17.333255: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:05:17.333255: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:05:17.333759: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:05:17.333759: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:05:18.085937: Add Order:User#DEMO201702141, Acc#, ProdCode=CLJ7, BS=B, 0@0, Ref(,), CliOrd#
+2017-03-01T15:05:29.128918: Add Order:User#DEMO201702141, Acc#, ProdCode=CLJ7, BS=S, 0@53.87, Ref(,), CliOrd#
+2017-03-01T15:05:30.131777: Start Logout ...
+2017-03-01T15:11:01.327459: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:11:01.327459: Logging in ...
+2017-03-01T15:11:02.637492: Login OK !>>> (UserId#DEMO201702141 systemTime:1488352260)systemid:PROXY0
+2017-03-01T15:11:02.641999: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:11:02.642500: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:11:02.642500: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:11:02.643002: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:11:02.643002: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:11:02.643501: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:11:02.644002: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:11:02.644002: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:11:02.644503: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:11:02.644503: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:11:02.645004: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:11:02.645004: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:11:02.645507: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:11:02.649514: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:11:02.649514: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:11:02.650012: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:11:02.650012: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:11:03.356570: Add Order:User#DEMO201702141, Acc#, ProdCode=CLJ7, BS=B, 0@0, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:11:14.402134: Add Order:User#DEMO201702141, Acc#, ProdCode=CLJ7, BS=S, 0@53.73, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:11:15.403857: Start Logout ...
+2017-03-01T15:16:28.083884: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:16:28.083884: Logging in ...
+2017-03-01T15:16:29.810655: Login OK !>>> (UserId#DEMO201702141 systemTime:1488352587)systemid:PROXY0
+2017-03-01T15:16:29.812655: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:16:29.812655: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:16:29.813155: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:16:29.813155: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:16:29.813155: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:16:29.813155: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:16:29.813155: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:16:29.813653: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:16:29.813653: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:16:29.813653: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:16:29.819859: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:16:29.819859: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:16:29.819859: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:16:29.820359: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:16:29.820359: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:16:29.820359: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:16:29.820860: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:16:30.103366: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=CLJ7, BS=B, 0@0, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:16:41.129811: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=CLJ7, BS=S, 0@0, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:16:42.132724: Start Logout ...
+2017-03-01T15:19:46.843680: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:19:46.844185: Logging in ...
+2017-03-01T15:19:48.148194: Login OK !>>> (UserId#DEMO201702141 systemTime:1488352786)systemid:PROXY0
+2017-03-01T15:19:48.150700: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:19:48.151200: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:19:48.151200: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:19:48.151200: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:19:48.151700: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:19:48.152202: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:19:48.152202: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:19:48.152202: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:19:48.152702: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:19:48.152702: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:19:48.156212: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:19:48.156212: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:19:48.156212: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:19:48.156710: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:19:48.160716: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:19:48.160716: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:19:48.160716: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:19:48.866160: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@0, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:19:59.898920: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@53.78, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:20:00.910867: Start Logout ...
+2017-03-01T15:21:23.792220: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:21:23.792220: Logging in ...
+2017-03-01T15:21:25.249451: Login OK !>>> (UserId#DEMO201702141 systemTime:1488352883)systemid:PROXY0
+2017-03-01T15:21:25.250454: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:21:25.250454: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:21:25.250454: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:21:25.250955: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:21:25.250955: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:21:25.250955: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:21:25.250955: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:21:25.250955: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:21:25.250955: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:21:25.251455: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:21:25.257969: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:21:25.257969: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:21:25.257969: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:21:25.257969: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:21:25.257969: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:21:25.257969: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:21:25.258970: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:21:25.808029: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@0, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:21:36.840988: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23790, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:21:37.844389: Start Logout ...
+2017-03-01T15:28:11.680859: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:28:11.680859: Logging in ...
+2017-03-01T15:28:12.941872: Login OK !>>> (UserId#DEMO201702141 systemTime:1488353290)systemid:PROXY0
+2017-03-01T15:28:12.945378: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:28:12.945378: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:28:12.945878: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:28:12.946379: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:28:12.946379: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:28:12.946379: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:28:12.946880: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:28:12.946880: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:28:12.947381: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:28:12.947883: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:28:12.950386: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:28:12.950386: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:28:12.950887: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:28:12.952390: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:28:12.952390: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:28:12.952390: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:28:12.952390: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:28:13.723972: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@0, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:28:24.769572: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23796, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:28:25.774590: Start Logout ...
+2017-03-01T15:29:40.495411: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:29:40.495912: Logging in ...
+2017-03-01T15:29:41.773592: Login OK !>>> (UserId#DEMO201702141 systemTime:1488353379)systemid:PROXY0
+2017-03-01T15:29:41.775598: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:29:41.775598: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:29:41.775598: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:29:41.776097: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:29:41.776097: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:29:41.776097: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:29:41.776598: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:29:41.776598: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:29:41.776598: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:29:41.777097: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:29:41.781773: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:29:41.781773: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:29:41.781773: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:29:41.781773: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:29:41.782275: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:29:41.782275: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:29:41.782275: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:29:53.515490: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@23783, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:29:54.545886: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23782, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:29:56.550704: Start Logout ...
+2017-03-01T15:30:52.130092: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T15:30:52.130595: Logging in ...
+2017-03-01T15:30:53.395590: Login OK !>>> (UserId#DEMO201702141 systemTime:1488353451)systemid:PROXY0
+2017-03-01T15:30:53.396593: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T15:30:53.396593: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T15:30:53.396593: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T15:30:53.397093: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T15:30:53.397093: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T15:30:53.397093: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T15:30:53.397093: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T15:30:53.397093: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T15:30:53.397093: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T15:30:53.397593: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T15:30:53.403526: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T15:30:53.403526: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T15:30:53.403526: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T15:30:53.404032: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T15:30:53.404032: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T15:30:53.404032: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T15:30:53.404032: WebLink: Id>>> 100 ,URL:
+2017-03-01T15:31:05.152848: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@23783, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:31:16.170115: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23786, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T15:31:28.176816: Start Logout ...
+2017-03-01T19:09:42.288646: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T19:09:42.289147: Logging in ...
+2017-03-01T19:09:43.566555: Login OK !>>> (UserId#DEMO201702141 systemTime:1488366580)systemid:PROXY0
+2017-03-01T19:09:43.570889: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T19:09:43.571390: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T19:09:43.571390: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T19:09:43.571390: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T19:09:43.571890: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T19:09:43.571890: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T19:09:43.571890: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T19:09:43.572390: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T19:09:43.572390: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T19:09:43.572390: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T19:09:43.574391: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T19:09:43.574391: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T19:09:43.574391: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T19:09:43.582531: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T19:09:43.582531: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T19:09:43.582531: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T19:09:43.583032: WebLink: Id>>> 100 ,URL:
+2017-03-01T19:09:55.308465: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@23855, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T19:10:06.335784: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23849, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T19:10:18.342170: Start Logout ...
+2017-03-01T23:53:00.929716: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T23:53:00.929716: Logging in ...
+2017-03-01T23:53:02.299988: Login OK !>>> (UserId#DEMO201702141 systemTime:1488383582)systemid:PROXY0
+2017-03-01T23:53:02.302993: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T23:53:02.302993: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T23:53:02.303494: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T23:53:02.303995: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T23:53:02.303995: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T23:53:02.304496: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T23:53:02.304496: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T23:53:02.304997: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T23:53:02.304997: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T23:53:02.305498: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T23:53:02.307501: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T23:53:02.308001: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T23:53:02.308001: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T23:53:02.308502: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T23:53:02.308502: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T23:53:02.310005: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T23:53:02.310005: WebLink: Id>>> 100 ,URL:
+2017-03-01T23:53:13.963433: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@23938, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T23:53:24.999657: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23937, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T23:54:26.226472: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T23:54:26.226472: Logging in ...
+2017-03-01T23:54:27.506278: Login OK !>>> (UserId#DEMO201702141 systemTime:1488383668)systemid:PROXY0
+2017-03-01T23:54:27.512287: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T23:54:27.512287: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T23:54:27.512793: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T23:54:27.512793: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T23:54:27.513293: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T23:54:27.513293: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T23:54:27.513789: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T23:54:27.514294: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T23:54:27.514294: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T23:54:27.514796: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T23:54:27.514796: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T23:54:27.515297: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T23:54:27.515297: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T23:54:27.515794: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T23:54:27.520832: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T23:54:27.520832: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T23:54:27.521332: WebLink: Id>>> 100 ,URL:
+2017-03-01T23:54:39.253555: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=B, 0@23943, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T23:54:50.288785: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=HSIH7, BS=S, 0@23944, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T23:56:26.418991: Set Connect (Host: demo.spsystem.info:8080)...
+2017-03-01T23:56:26.419489: Logging in ...
+2017-03-01T23:56:27.846431: Login OK !>>> (UserId#DEMO201702141 systemTime:1488383788)systemid:PROXY0
+2017-03-01T23:56:27.874723: WebLink: Id>>> 0 ,URL:http://spsystem.info/autoupgrade/sptrader_upgrade_xx.inf
+2017-03-01T23:56:27.875223: WebLink: Id>>> 1 ,URL:http://spsystem.info/splinker/index.php?action=webchart
+2017-03-01T23:56:27.875223: WebLink: Id>>> 2 ,URL:http://spsystem.info/splinker/index.php?action=sphelp
+2017-03-01T23:56:27.875724: WebLink: Id>>> 4 ,URL:http://spsystem.info/splinker/index.php?action=spprodinfo
+2017-03-01T23:56:27.875724: WebLink: Id>>> 9 ,URL:https://demo.spsystem.info:8001
+2017-03-01T23:56:27.876225: WebLink: Id>>> 20 ,URL:spsystem.info/splinker/index.php?a=1
+2017-03-01T23:56:27.876725: WebLink: Id>>> 21 ,URL:spsystem.info/splinker/index.php?a=2
+2017-03-01T23:56:27.876725: WebLink: Id>>> 24 ,URL:spsystem.info:80/spadminwebapi_f/index.php
+2017-03-01T23:56:27.877228: WebLink: Id>>> 28 ,URL:http://spsystem.info/spadminwebapi_f/index.php
+2017-03-01T23:56:27.877228: WebLink: Id>>> 29 ,URL:http://spsystem.info/spproduct_mobile/index.php?referer=mobile&format=json
+2017-03-01T23:56:27.877727: WebLink: Id>>> 32 ,URL:http://demo.spsystem.info:8000/spmobile/spwebapi/
+2017-03-01T23:56:27.877727: WebLink: Id>>> 33 ,URL:http://spsystem.info
+2017-03-01T23:56:27.878228: WebLink: Id>>> 34 ,URL:http://spsystem1.info
+2017-03-01T23:56:27.903266: WebLink: Id>>> 35 ,URL:http://spsystem.info
+2017-03-01T23:56:27.903266: WebLink: Id>>> 36 ,URL:http://spsystem1.info
+2017-03-01T23:56:27.903266: WebLink: Id>>> 37 ,URL:http://spsystem.info
+2017-03-01T23:56:27.903266: WebLink: Id>>> 100 ,URL:
+2017-03-01T23:56:39.441824: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=CLJ7, BS=B, 0@53.99, Ref(Java@SPAPI,0), CliOrd#0
+2017-03-01T23:56:50.459077: Add Order:User#DEMO201702141, Acc#DEMO201702141, ProdCode=CLJ7, BS=S, 0@53.98, Ref(Java@SPAPI,0), CliOrd#0
