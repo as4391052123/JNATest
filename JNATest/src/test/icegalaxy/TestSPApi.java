@@ -33,7 +33,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static String product = "CLJ7";
+	static String product = "HSIH7";
 	
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
@@ -239,7 +239,7 @@ public class TestSPApi
 			public int OpenInt;
 			public char[] ProdCode = new char[16];
 			public char[] ProdName = new char[40];
-			public String DecInPrice;
+			public byte DecInPrice;
 			public int ExstateNo;
 			public int TradeStateNo;
 			public boolean Suspend;
@@ -366,7 +366,7 @@ public class TestSPApi
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
 		
-		byte dec = 50;
+		byte dec = 123;
 		
 		
 		order.DecInPrice = dec;
@@ -451,7 +451,7 @@ public class TestSPApi
 		};
 
 		//Try using lambda
-		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + " ");
+		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + ", Dec place: " + last.DecInPrice + " " );
 	
 
 		RegisterConn conn = new RegisterConn()
@@ -544,7 +544,7 @@ public class TestSPApi
 			}
 			counter++;
 		//	System.out.println("counter: " + counter);
-			if (counter > 10)
+			if (counter > 2)
 				break;
 		}
 
