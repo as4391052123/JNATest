@@ -276,7 +276,7 @@ public class TestSPApi
 			public double UpPrice;
 			public double DownLevel;
 			public double DownPrice;
-			public int ExtOrderNo;
+			public long ExtOrderNo;
 			public int IntOrderNo;
 			public int Qty;
 			public int TradedQty;
@@ -284,7 +284,7 @@ public class TestSPApi
 			public int ValidTime;
 			public int SchedTime;
 			public int TimeStamp;
-			public long OrderOptions;
+			public int OrderOptions;
 			public byte[] AccNo = new byte[16];
 			public byte[] ProdCode = new byte[16];
 			public byte[] Initiator = new byte[16];
@@ -363,24 +363,22 @@ public class TestSPApi
 
 		order.Qty = 2;
 
-		setBytes(order.Ref, "Java@SPAPI"); 
-		setBytes(order.Ref2, "0"); 
+		setBytes(order.Ref, "Java"); 
+		setBytes(order.Ref2, "SPAPI"); 
 		// order.Ref2 = Native.toByteArray("0");
 		// order.GatewayCode = Native.toByteArray("");
 		setBytes(order.GatewayCode, "");
 
-		order.CondType = 48; // normal type
+		order.CondType = 0; // normal type
 //		 order.ClOrderId = Native.toByteArray("0");
 		setBytes(order.ClOrderId, "0"); 
 		order.ValidType = 0;
 		
-		byte dec = 48;
 		
-		
-		order.DecInPrice = '0';
+		order.DecInPrice = 2 ;
 //		order.OpenClose = '\0';
 //		order.StopType = '0';
-		order.OrderType = 48; // limit
+		order.OrderType = 0; // limit
 //		order.OrderOptions = 0;
 
 		
