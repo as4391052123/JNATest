@@ -202,10 +202,10 @@ public class TestSPApi
 			public byte[] TradeClass = new byte[16];
 			public byte[] ClientId = new byte[16];
 			public byte[] AEId = new byte[16];
-			public String AccType;
-			public String CtrlLevel;
-			public String Active;
-			public String MarginPeriod;
+			public byte AccType;
+			public byte CtrlLevel;
+			public byte Active;
+			public byte MarginPeriod;
 
 			@Override
 			protected List getFieldOrder()
