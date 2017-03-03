@@ -529,10 +529,16 @@ public class TestSPApi
 				break;
 		}
 
+		System.out.println("Test 2");
+		
 		System.out.println("AccInfo: " + getAccInfo());
 
+		System.out.println("Test 3");
+		
 		addOrder(order, Native.toByteArray("B")[0]);
 
+		System.out.println("Test 4");
+		
 		counter = 0;
 		
 		while (true)
