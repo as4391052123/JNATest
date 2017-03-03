@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.imageio.spi.RegisterableService;
-
 import com.sun.jna.Callback;
 import com.sun.jna.Library;
 
@@ -154,25 +152,25 @@ public class TestSPApi
 			public double RecNo;
 			public double Price;
 			public double AvgPrice;
-			public int TradeNo;
-			public int ExtOrderNo;
+			public long TradeNo;
+			public long ExtOrderNo;
 			public int IntOrderNo;
 			public int Qty;
 			public int TradeDate;
 			public int TradeTime;
-			public char[] AccNo = new char[16];
-			public char[] ProdCode = new char[16];
-			public char[] Initiator = new char[16];
-			public char[] Ref = new char[16];
-			public char[] Ref2 = new char[16];
-			public char[] GatewayCode = new char[16];
-			public char[] ClOrderId = new char[40];
-			public char BuySell;
-			public char OpenClose;
+			public byte[] AccNo = new byte[16];
+			public byte[] ProdCode = new byte[16];
+			public byte[] Initiator = new byte[16];
+			public byte[] Ref = new byte[16];
+			public byte[] Ref2 = new byte[16];
+			public byte[] GatewayCode = new byte[16];
+			public byte[] ClOrderId = new byte[40];
+			public byte BuySell;
+			public byte OpenClose;
 			public int Status;
 			public int DecInPrice;
 			public double OrderPrice;
-			public char[] TradeRef = new char[40];
+			public byte[] TradeRef = new byte[40];
 			public int TotalQty;
 			public int RemainingQty;
 			public int TradedQty;
@@ -436,16 +434,8 @@ public class TestSPApi
 		
 		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
 
-		RegisterTradeReport tradeReport = new RegisterTradeReport()
-		{
-
-			@Override
-			public void invoke(long rec_no, SPApiTrade trade)
-			{
-				System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
-			}
-		};
-
+		RegisterTradeReport tradeReport = (rec_no, trade) -> System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
+		
 		AccLoginReply accReply = new AccLoginReply()
 		{
 
@@ -471,27 +461,8 @@ public class TestSPApi
 			}
 		};
 
-		RegisterError error = new RegisterError()
-		{
+	
 
-			@Override
-			public void invoke(short host_id, long link_err)
-			{
-				System.out.println("Error: " + link_err);
-
-			}
-		};
-
-		RegisterLoginReply loginReply = new RegisterLoginReply()
-		{
-
-			@Override
-			public void printLoginStatus(long ret_code, String ret_msg)
-			{
-				System.out.println("Login status: " + ret_code);
-
-			}
-		};
 		
 		RegisterOrderFail orderFail = (action, orderx, err_code, err_msg) -> System.out.println("Action no: " + action + 
 				", order status: " + orderx.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
