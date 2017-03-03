@@ -534,6 +534,8 @@ public class TestSPApi
 			}
 
 		}
+		
+		System.out.println("Test 1");
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 1);
 
