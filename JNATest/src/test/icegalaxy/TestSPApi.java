@@ -76,7 +76,6 @@ public class TestSPApi
 
 		void SPAPI_RegisterConnectingReply(RegisterConn conn);
 
-		void SPAPI_RegisterAccountLoginReply(AccLoginReply loginReply);
 
 		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
 
@@ -265,10 +264,7 @@ public class TestSPApi
 		void invoke(long rec_no, SPApiTrade trade);
 	}
 
-	public interface AccLoginReply extends Callback
-	{
-		void invoke(String accNo, long ret_code, String ret_msg);
-	}
+	
 
 	public interface RegisterPriceUpdate extends Callback
 	{
@@ -415,7 +411,7 @@ public class TestSPApi
 
 		RegisterTradeReport tradeReport = (rec_no, trade) -> System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
 		
-		AccLoginReply accReply = (accNo, ret_code, ret_msg) -> System.out.println("AccNo: " + accNo);
+		RegisterLoginReply loginReply = (ret_code, ret_msg) -> System.out.println("Login reply: " + ret_msg + " [" + ret_code + "]");
 		//Try using lambda
 		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + ", Dec place: " + last.DecInPrice + " " );
 	
@@ -447,7 +443,7 @@ public class TestSPApi
 
 		SPApiDll.INSTANCE.SPAPI_RegisterConnectingReply(conn);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterAccountLoginReply(accReply);
+		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
 		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 
