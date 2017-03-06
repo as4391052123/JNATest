@@ -37,7 +37,7 @@ public class TestSPApi
 	static String license = "58BA6E2F967DE";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201703047";
-	static String password = "ly89h";
+	static String password = "830811aa";
 	static String server = "demo.spsystem.info";
 
 	public interface SPApiDll extends Library
