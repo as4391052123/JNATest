@@ -24,7 +24,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static byte[] product = getBytes("HSIH7", 16);
+	static byte[] product = getBytes("CLJ7", 16);
 
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
@@ -102,8 +102,8 @@ public class TestSPApi
 			public byte[] ClOrderId = new byte[40];
 			public byte BuySell;
 			public byte OpenClose;
-			public int Status;
-			public int DecInPrice;
+			public byte Status;
+			public byte DecInPrice;
 			public double OrderPrice;
 			public byte[] TradeRef = new byte[40];
 			public int TotalQty;
