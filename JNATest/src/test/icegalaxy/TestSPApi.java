@@ -24,7 +24,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static byte[] product = getBytes("HSIH7", 16);
+	static byte[] product = getBytes("CLJ7", 16);
 
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
@@ -33,6 +33,13 @@ public class TestSPApi
 	// String password = "ting1980";
 	// String server = "futures.bsgroup.com.hk";
 
+/*	static int port = 8080;
+	static String license = "58BA6E2F967DE";
+	static String app_id = "SPDEMO";
+	static String userid = "DEMO201703047";
+	static String password = "830811aa";
+	static String server = "demo.spsystem.info";*/
+	
 	static int port = 8080;
 	static String license = "58A665DE84D02";
 	static String app_id = "SPDEMO";
@@ -101,8 +108,8 @@ public class TestSPApi
 			public byte[] ClOrderId = new byte[40];
 			public byte BuySell;
 			public byte OpenClose;
-			public int Status;
-			public int DecInPrice;
+			public byte Status;
+			public byte DecInPrice;
 			public double OrderPrice;
 			public byte[] TradeRef = new byte[40];
 			public int TotalQty;
@@ -115,7 +122,7 @@ public class TestSPApi
 			{
 				return Arrays.asList(new String[]
 				{ "RecNo", "Price", "AvgPrice", "TradeNo", "ExtOrderNo", "IntOrderNo", "Qty", "TradeDate", "TradeTime",
-						"AccNo", "", "ProdCode", "Initiator", "Ref", "Ref2", "GatewayCode", "ClOrderId", "BuySell",
+						"AccNo", "ProdCode", "Initiator", "Ref", "Ref2", "GatewayCode", "ClOrderId", "BuySell",
 						"OpenClose", "Status", "DecInPrice", "OrderPrice", "TradeRef", "TotalQty", "RemainingQty",
 						"TradedQty", "AvgTradedPrice" });
 			}
@@ -345,7 +352,7 @@ public class TestSPApi
 
 		order.CondType = 0; // normal type
 		// order.ClOrderId = Native.toByteArray("0");
-		setBytes(order.ClOrderId, "0");
+		setBytes(order.ClOrderId, "2");
 		order.ValidType = 0;
 
 		order.DecInPrice = 2;
