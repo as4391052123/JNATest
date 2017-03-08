@@ -326,11 +326,12 @@ public class TestSPApi
 		return i;
 	}
 
-	public static int addOrder(SPApiOrder order, byte buy_sell)
+	public static int addOrder(byte buy_sell)
 	{
 
+		
 		int rc;
-		// SPApiOrder order = new SPApiOrder();
+		SPApiOrder order = new SPApiOrder();
 
 		// order.AccNo = Native.toByteArray("");
 		// order.ProdCode = Native.toByteArray("CLJ7");
@@ -365,15 +366,15 @@ public class TestSPApi
 
 		getPriceByCode();
 
-/*		if (buy_sell == 'B')
+		if (buy_sell == 'B')
 			order.Price = currentAsk; // market price
 		else
-			order.Price = currentBid;*/
+			order.Price = currentBid;
 		
-		if (buy_sell == 'B')
+	/*	if (buy_sell == 'B')
 			order.Price = 50; // market price
 		else
-			order.Price = 60;
+			order.Price = 60;*/
 
 		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
 
@@ -419,7 +420,6 @@ public class TestSPApi
 		int login = 1;
 		int logout = 1;
 		
-		SPApiOrder order = new SPApiOrder();
 		
 		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
 
@@ -436,8 +436,8 @@ public class TestSPApi
 			status += con_status;
 		};
 				
-		RegisterOrderFail orderFail = (action, orderx, err_code, err_msg) -> System.out.println("Action no: " + action + 
-				", order status: " + orderx.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
+		RegisterOrderFail orderFail = (action, order, err_code, err_msg) -> System.out.println("Action no: " + action + 
+				", order status: " + order.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
 
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
 
@@ -507,7 +507,7 @@ public class TestSPApi
 
 		System.out.println("Test 3");
 		
-		addOrder(order, Native.toByteArray("B")[0]);
+		addOrder((byte) 'B');
 
 		System.out.println("Test 4");
 		
@@ -520,12 +520,12 @@ public class TestSPApi
 			if (counter > 10)
 				break;
 		}
-		SPApiDll.INSTANCE.SPAPI_DeleteAllOrders(userid, userid);
+	//	SPApiDll.INSTANCE.SPAPI_DeleteAllOrders(userid, userid);
 //		getPriceByCode();
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		addOrder(order, Native.toByteArray("S")[0]);
+		addOrder((byte) 'S');
 		
 		counter = 0;
 		
