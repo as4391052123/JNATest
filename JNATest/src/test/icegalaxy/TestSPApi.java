@@ -56,6 +56,8 @@ public class TestSPApi
 		void SPAPI_Uninitialize();
 
 		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
+		
+		int SPAPI_DeleteAllOrders(String user_id, String acc_no);
 
 		int SPAPI_ActivateAllOrders(String user_id, String acc_no);
 
@@ -363,10 +365,15 @@ public class TestSPApi
 
 		getPriceByCode();
 
-		if (buy_sell == 'B')
+/*		if (buy_sell == 'B')
 			order.Price = currentAsk; // market price
 		else
-			order.Price = currentBid;
+			order.Price = currentBid;*/
+		
+		if (buy_sell == 'B')
+			order.Price = 50; // market price
+		else
+			order.Price = 60;
 
 		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
 
@@ -513,7 +520,7 @@ public class TestSPApi
 			if (counter > 10)
 				break;
 		}
-
+		SPApiDll.INSTANCE.SPAPI_DeleteAllOrders(userid, userid);
 //		getPriceByCode();
 
 		System.out.println("AccInfo: " + getAccInfo());
