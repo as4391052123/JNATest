@@ -51,7 +51,7 @@ public class TestSPApi2
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 		
-		int SPAPI_SetLanguagedId(int langid);
+		int SPAPI_SetLanguageId(int langid);
 
 		int SPAPI_Initialize();
 
@@ -423,7 +423,7 @@ public class TestSPApi2
 		int logout = 1;
 		
 		
-		lan = SPApiDll.INSTANCE.SPAPI_SetLanguagedId(0);
+		lan = SPApiDll.INSTANCE.SPAPI_SetLanguageId(0);
 		System.out.println("Lanid: " + lan);
 		
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
