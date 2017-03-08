@@ -421,100 +421,15 @@ public class TestSPApi2
 		int logout = 1;
 		
 		
-	/*	RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
-
-		RegisterTradeReport tradeReport = (rec_no, trade) -> System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
-		
-		RegisterLoginReply loginReply = (ret_code, ret_msg) -> System.out.println("Login reply: " + ret_msg + " [" + ret_code + "]");
-		//Try using lambda
-		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + ", Dec place: " + last.DecInPrice + " " );
-	
-
-		RegisterConn conn = (host_type,  con_status) ->
-		{
-			System.out.println("conn reply- host type: " + host_type + ", con state: " + con_status);
-			status += con_status;
-		};
-				
-		RegisterOrderFail orderFail = (action, order, err_code, err_msg) -> System.out.println("Action no: " + action + 
-				", order status: " + order.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
-
-		
-
-		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
-
-		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
-
-		SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
-		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderRequestFailed(orderFail);
-		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderBeforeSendReport(orderB4);
-
-		// SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
-
-		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
-
-		SPApiDll.INSTANCE.SPAPI_RegisterConnectingReply(conn);
-
-		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);*/
-		
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
-
-		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
-
-		login = SPApiDll.INSTANCE.SPAPI_Login();
-
-	/*	while (status < 9)
-
-		{
-
-			try
-			{
-				Thread.sleep(1000);
-			} catch (InterruptedException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
 		
-		System.out.println("Test 1");
+		System.out.println("Init");
 
-		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 1);
+//		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 
-		System.out.println("Price subscribed: " + price);
-		
+//		login = SPApiDll.INSTANCE.SPAPI_Login();
 
-		while (true)
-		{
-			try
-			{
-				Thread.sleep(1000);
-			} catch (InterruptedException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			counter++;
-		//	System.out.println("counter: " + counter);
-			if (counter > 2)
-				break;
-		}
-
-		System.out.println("Test 2");
-		
-		System.out.println("AccInfo: " + getAccInfo());
-
-		System.out.println("Test 3");
-		
-		addOrder((byte) 'B');
-
-		System.out.println("Test 4");
-		
-		counter = 0;*/
-		
+			
 		while (true)
 		{
 			sleep(1000);
@@ -522,43 +437,21 @@ public class TestSPApi2
 			if (counter > 10)
 				break;
 		}
-	//	SPApiDll.INSTANCE.SPAPI_DeleteAllOrders(userid, userid);
-//		getPriceByCode();
 
-//		System.out.println("AccInfo: " + getAccInfo());
 
-	/*	addOrder((byte) 'S');
-		
-		counter = 0;
-		
-		while (true)
-		{
-			sleep(1000);
-			counter++;
-			if (counter > 10)
-				break;
-		}
-		
-		System.out.println("AccInfo: " + getAccInfo());
-//		displayAllTrades();
+//		logout = SPApiDll.INSTANCE.SPAPI_Logout(userid);
 
-		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
-
-		sleep(1000);*/
-
-		logout = SPApiDll.INSTANCE.SPAPI_Logout(userid);
-
-		while (logout != 0)
-		{
-			sleep(1000);
-
-			System.out.println("Logout: " + logout);
-		}
+//		while (logout != 0)
+//		{
+//			sleep(1000);
+//
+//			System.out.println("Logout: " + logout);
+//		}
 
 		System.out.println("init: " + in);
-		System.out.println("login: " + login);
+//		System.out.println("login: " + login);
 
-		System.out.println("logout: " + logout);
+//		System.out.println("logout: " + logout);
 
 		SPApiDll.INSTANCE.SPAPI_Uninitialize();
 
