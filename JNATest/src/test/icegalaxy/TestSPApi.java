@@ -84,6 +84,8 @@ public class TestSPApi
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 
 		void SPAPI_RegisterConnectingReply(RegisterConn conn);
+		
+		void SPAPI_RegisterOrderReport(RegisterOrder orderReport);
 
 
 		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
@@ -257,6 +259,11 @@ public class TestSPApi
 
 		}
 	}
+	
+	public interface RegisterOrder extends Callback
+	{
+		void invoke(long rec_no, SPApiOrder order);
+	}
 
 	public interface RegisterOrderB4 extends Callback
 	{
@@ -420,6 +427,7 @@ public class TestSPApi
 		int login = 1;
 		int logout = 1;
 		
+		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
 		
 		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
 
@@ -456,6 +464,8 @@ public class TestSPApi
 		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 
 		SPApiDll.INSTANCE.SPAPI_RegisterConnectingReply(conn);
+		
+		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
 
 		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
