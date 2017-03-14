@@ -366,7 +366,7 @@ public class TestSPApi
 		order.ValidType = 0;
 
 		order.DecInPrice = 2;
-		// order.OpenClose = '\0';
+		order.OpenClose = '\0';
 		// order.StopType = '0';
 		order.OrderType = 0; // limit
 		// order.OrderOptions = 0;
