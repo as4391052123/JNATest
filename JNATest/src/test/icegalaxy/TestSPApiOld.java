@@ -26,12 +26,12 @@ public class TestSPApiOld
 
 	static byte[] product = getBytes("CLJ7", 16);
 
-	static int port = 8080;
+	/*static int port = 8080;
 	static String license = "76C2FB5B60006C7A";
 	static String app_id = "BS";
 	static String userid = "T865829";
 	static String password = "ting1980";
-	static String server = "futures.bsgroup.com.hk";
+	static String server = "futures.bsgroup.com.hk";*/
 
 /*	static int port = 8080;
 	static String license = "58BA6E2F967DE";
@@ -40,12 +40,12 @@ public class TestSPApiOld
 	static String password = "830811aa";
 	static String server = "demo.spsystem.info";*/
 	
-/*	static int port = 8080;
+	static int port = 8080;
 	static String license = "58A665DE84D02";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201702141";
 	static String password = "00000000";
-	static String server = "demo.spsystem.info";*/
+	static String server = "demo.spsystem.info";
 
 	public interface SPApiDll extends Library
 	{
@@ -60,6 +60,8 @@ public class TestSPApiOld
 		int  SPAPI_GetLoginStatus(short  host_id);
 		
 		void SPAPI_RegisterLoadTradeEnd(registerLoadTrade loadTrade);
+		
+		void SPAPI_RegisterLoadAETradeEnd(registerLoadAETrade loadTrade);
 
 		//void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -270,6 +272,10 @@ public class TestSPApiOld
 		}
 	}
 	
+	public interface registerLoadAETrade extends Callback
+	{
+		void invoke();
+	}
 	
 	public interface registerLoadTrade extends Callback
 	{
@@ -457,6 +463,8 @@ public class TestSPApiOld
 		
 		
 		registerLoadTrade loadTrade = (accNo) -> System.out.println("Registered LoadTradeEnd" + accNo);
+		
+		registerLoadAETrade loadAETrade = () -> System.out.println("Registered LoadAETradeEnd");
 				
 		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Update: " + status);
 		
