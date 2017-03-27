@@ -71,7 +71,7 @@ public class TestSPApiOld
 
 		int SPAPI_Login();
 
-		int SPAPI_Logout(String user_id);
+		int SPAPI_Logout();
 
 		int SPAPI_AddOrder(SPApiOrder order);
 
@@ -471,6 +471,7 @@ public class TestSPApiOld
 		
 		
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
+		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
 		
 		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 
@@ -490,7 +491,7 @@ public class TestSPApiOld
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 
-		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
+	
 		
 //		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
 
@@ -582,7 +583,7 @@ public class TestSPApiOld
 */
 		sleep(10000);
 
-		logout = SPApiDll.INSTANCE.SPAPI_Logout(userid);
+		logout = SPApiDll.INSTANCE.SPAPI_Logout();
 		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(false);
 
 		while (logout != 0)
