@@ -56,6 +56,8 @@ public class TestSPApiOld
 		int SPAPI_Uninitialize();
 		
 		void SPAPI_Poll();
+		
+		int  SPAPI_GetLoginStatus(short  host_id);
 
 		//void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -444,6 +446,8 @@ public class TestSPApiOld
 		int price = 1;
 		int login = 1;
 		int logout = 1;
+		
+
 				
 		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Update: " + status);
 		
@@ -587,6 +591,12 @@ public class TestSPApiOld
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
 */
 		sleep(10000);
+		
+		System.out.println("Get Login Status 81: "  + SPApiDll.INSTANCE.SPAPI_GetLoginStatus((short) 81));
+		System.out.println("Get Login Status 83: "  + SPApiDll.INSTANCE.SPAPI_GetLoginStatus((short) 83));
+		System.out.println("Get Login Status 87: "  + SPApiDll.INSTANCE.SPAPI_GetLoginStatus((short) 87));
+		System.out.println("Get Login Status 88: "  + SPApiDll.INSTANCE.SPAPI_GetLoginStatus((short) 88));
+		
 
 		logout = SPApiDll.INSTANCE.SPAPI_Logout();
 		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(false);
