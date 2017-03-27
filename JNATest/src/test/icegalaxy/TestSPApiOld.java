@@ -16,6 +16,9 @@ import test.icegalaxy.TestSPApiOld.SPApiDll.SPApiOrder;
 import test.icegalaxy.TestSPApiOld.SPApiDll.SPApiPrice;
 import test.icegalaxy.TestSPApiOld.SPApiDll.SPApiTrade;
 
+
+//Old version 8.6839 keep hanging in connecting. May be not supporting JNA
+
 public class TestSPApiOld
 {
 
