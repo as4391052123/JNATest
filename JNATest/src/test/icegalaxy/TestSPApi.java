@@ -24,7 +24,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static byte[] product = getBytes("CLJ7", 16);
+	static byte[] product = getBytes("CLK7", 16);
 
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
@@ -354,15 +354,15 @@ public class TestSPApi
 
 		order.Qty = 2;
 
-		setBytes(order.Ref, "Java");
-		setBytes(order.Ref2, "SPAPI");
+//		setBytes(order.Ref, "Java");
+//		setBytes(order.Ref2, "SPAPI");
 		// order.Ref2 = Native.toByteArray("0");
 		// order.GatewayCode = Native.toByteArray("");
-		setBytes(order.GatewayCode, "");
+//		setBytes(order.GatewayCode, "");
 
 		order.CondType = 0; // normal type
 		// order.ClOrderId = Native.toByteArray("0");
-		setBytes(order.ClOrderId, "2");
+//		setBytes(order.ClOrderId, "2");
 		order.ValidType = 0;
 
 		order.DecInPrice = 2;
