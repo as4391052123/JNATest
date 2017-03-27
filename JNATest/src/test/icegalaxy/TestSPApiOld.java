@@ -92,7 +92,7 @@ public class TestSPApiOld
 
 //		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
 
-//		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
+		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
 
 		public class SPApiTrade extends Structure
 		{
@@ -435,6 +435,8 @@ public class TestSPApiOld
 		int login = 1;
 		int logout = 1;
 		
+		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Updata: " + status);
+		
 		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
 		
 		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
@@ -471,7 +473,7 @@ public class TestSPApiOld
 		
 //		SPApiDll.INSTANCE.SPAPI_RegisterOrderBeforeSendReport(orderB4);
 
-		// SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
+		 SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(loginStatus);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 
