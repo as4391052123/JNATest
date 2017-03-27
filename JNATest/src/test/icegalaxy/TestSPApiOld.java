@@ -64,6 +64,8 @@ public class TestSPApiOld
 	//	int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
 		int SPAPI_GetPriceByCode(String user_id, byte[] prod_code, SPApiPrice price);
+		
+		void SPAPI_SetBackgroundPoll(boolean onoff);
 
 		void SPAPI_SetLoginInfo(String server, int port, String license, String app_id, String userid, String password);
 
@@ -446,14 +448,18 @@ public class TestSPApiOld
 
 		RegisterConn conn = (host_type,  con_status) ->
 		{
-			System.out.println("conn reply- host type: " + host_type + ", con state: " + con_status);
+			System.out.println("conn reply - host type: " + host_type + ", con state: " + con_status);
 			status += con_status;
 		};
 				
 		RegisterOrderFail orderFail = (action, order, err_code, err_msg) -> System.out.println("Action no: " + action + 
 				", order status: " + order.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
 
+		
+		
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
+		
+		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
@@ -469,7 +475,7 @@ public class TestSPApiOld
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
+		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
 		
 //		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
 
@@ -478,6 +484,7 @@ public class TestSPApiOld
 		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 
 		login = SPApiDll.INSTANCE.SPAPI_Login();
+		System.out.println("Logging in");
 
 	/*	while (status < 9)
 
@@ -558,9 +565,10 @@ public class TestSPApiOld
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
 */
-		sleep(1000);
+		sleep(10000);
 
 		logout = SPApiDll.INSTANCE.SPAPI_Logout(userid);
+		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(false);
 
 		while (logout != 0)
 		{
