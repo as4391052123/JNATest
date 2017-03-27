@@ -53,7 +53,7 @@ public class TestSPApiOld
 
 		int SPAPI_Initialize();
 
-		void SPAPI_Uninitialize();
+		int SPAPI_Uninitialize();
 
 		//void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -63,7 +63,7 @@ public class TestSPApiOld
 
 	//	int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
 
-	//	int SPAPI_GetPriceByCode(String user_id, byte[] prod_code, SPApiPrice price);
+		int SPAPI_GetPriceByCode(String user_id, byte[] prod_code, SPApiPrice price);
 
 		void SPAPI_SetLoginInfo(String server, int port, String license, String app_id, String userid, String password);
 
@@ -83,14 +83,14 @@ public class TestSPApiOld
 
 		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
 
-		void SPAPI_RegisterConnectingReply(RegisterConn conn);
+		void SPAPI_RegisterPServerLinkStatusUpdate(RegisterConn conn);
 		
-		void SPAPI_RegisterOrderReport(RegisterOrder orderReport);
+//		void SPAPI_RegisterOrderReport(RegisterOrder orderReport);
 
 
-		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
+//		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
 
-		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
+//		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
 
 		public class SPApiTrade extends Structure
 		{
@@ -289,7 +289,7 @@ public class TestSPApiOld
 
 	public interface RegisterConn extends Callback
 	{
-		void invoke(long host_type, long con_status);
+		void invoke(short host_id, long con_status);
 	}
 
 	public interface RegisterError extends Callback
@@ -307,7 +307,7 @@ public class TestSPApiOld
 		void printStatus(long login_status);
 	}
 
-	public static int getAccInfo()
+/*	public static int getAccInfo()
 	{
 
 		SPApiAccInfo info = new SPApiAccInfo();
@@ -321,7 +321,7 @@ public class TestSPApiOld
 
 		return i;
 
-	}
+	}*/
 
 	public static int getPriceByCode()
 	{
@@ -406,7 +406,7 @@ public class TestSPApiOld
 
 	}
 
-	public static void displayAllTrades()
+/*	public static void displayAllTrades()
 	{
 		ArrayList<SPApiTrade> trades = null;
 
@@ -422,7 +422,7 @@ public class TestSPApiOld
 
 		}
 
-	}
+	}*/
 
 	public static void main(String[] args)
 	{
@@ -457,29 +457,29 @@ public class TestSPApiOld
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
+//		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
+//		SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
 		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderRequestFailed(orderFail);
+//		SPApiDll.INSTANCE.SPAPI_RegisterOrderRequestFailed(orderFail);
 		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderBeforeSendReport(orderB4);
+//		SPApiDll.INSTANCE.SPAPI_RegisterOrderBeforeSendReport(orderB4);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterConnectingReply(conn);
+		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
+//		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
+//		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
 		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 
 		login = SPApiDll.INSTANCE.SPAPI_Login();
 
-		while (status < 9)
+	/*	while (status < 9)
 
 		{
 
@@ -557,7 +557,7 @@ public class TestSPApiOld
 //		displayAllTrades();
 
 		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
-
+*/
 		sleep(1000);
 
 		logout = SPApiDll.INSTANCE.SPAPI_Logout(userid);
@@ -574,7 +574,7 @@ public class TestSPApiOld
 
 		System.out.println("logout: " + logout);
 
-		SPApiDll.INSTANCE.SPAPI_Uninitialize();
+		un = SPApiDll.INSTANCE.SPAPI_Uninitialize();
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);
