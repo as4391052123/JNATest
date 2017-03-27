@@ -90,7 +90,7 @@ public class TestSPApiOld
 //		void SPAPI_RegisterOrderReport(RegisterOrder orderReport);
 
 
-//		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
+		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
 
 		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
 
@@ -434,7 +434,7 @@ public class TestSPApiOld
 		int price = 1;
 		int login = 1;
 		int logout = 1;
-		
+				
 		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Updata: " + status);
 		
 		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
@@ -463,7 +463,7 @@ public class TestSPApiOld
 		
 		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 
-		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
+		 SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
 //		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
 
