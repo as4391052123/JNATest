@@ -33,19 +33,19 @@ public class TestSPApiOld
 	// String password = "ting1980";
 	// String server = "futures.bsgroup.com.hk";
 
-/*	static int port = 8080;
+	static int port = 8080;
 	static String license = "58BA6E2F967DE";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201703047";
 	static String password = "830811aa";
-	static String server = "demo.spsystem.info";*/
+	static String server = "demo.spsystem.info";
 	
-	static int port = 8080;
+/*	static int port = 8080;
 	static String license = "58A665DE84D02";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201702141";
 	static String password = "00000000";
-	static String server = "demo.spsystem.info";
+	static String server = "demo.spsystem.info";*/
 
 	public interface SPApiDll extends Library
 	{
@@ -435,7 +435,7 @@ public class TestSPApiOld
 		int login = 1;
 		int logout = 1;
 				
-		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Updata: " + status);
+		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Update: " + status);
 		
 		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
 		
