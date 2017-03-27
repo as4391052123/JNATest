@@ -496,7 +496,7 @@ public class TestSPApiOld
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
 		
 		SPApiDll.INSTANCE.SPAPI_RegisterLoadTradeEnd(loadTrade);
-		
+		SPApiDll.INSTANCE.SPAPI_RegisterLoadAETradeEnd(loadAETrade);
 		
 		
 	
