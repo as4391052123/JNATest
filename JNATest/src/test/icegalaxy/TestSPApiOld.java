@@ -491,7 +491,7 @@ public class TestSPApiOld
 		
 		
 		
-//		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
+	
 		
 		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 
@@ -517,7 +517,9 @@ public class TestSPApiOld
 
 //		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 		 
-		 SPApiDll.INSTANCE.SPAPI_Poll();
+//		 SPApiDll.INSTANCE.SPAPI_Poll();
+		 
+		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
 
 		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 		
