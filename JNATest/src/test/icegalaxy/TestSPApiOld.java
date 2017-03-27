@@ -26,19 +26,19 @@ public class TestSPApiOld
 
 	static byte[] product = getBytes("CLJ7", 16);
 
-	// int port = 8080;
-	// String license = "76C2FB5B60006C7A";
-	// String app_id = "BS";
-	// String userid = "T865829";
-	// String password = "ting1980";
-	// String server = "futures.bsgroup.com.hk";
+	 int port = 8080;
+	 String license = "76C2FB5B60006C7A";
+	 String app_id = "BS";
+	 String userid = "T865829";
+	 String password = "ting1980";
+	 String server = "futures.bsgroup.com.hk";
 
-	static int port = 8080;
+/*	static int port = 8080;
 	static String license = "58BA6E2F967DE";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201703047";
 	static String password = "830811aa";
-	static String server = "demo.spsystem.info";
+	static String server = "demo.spsystem.info";*/
 	
 /*	static int port = 8080;
 	static String license = "58A665DE84D02";
