@@ -54,6 +54,8 @@ public class TestSPApiOld
 		int SPAPI_Initialize();
 
 		int SPAPI_Uninitialize();
+		
+		void SPAPI_Poll();
 
 		//void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -471,7 +473,10 @@ public class TestSPApiOld
 		
 		
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
-		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
+		
+		SPApiDll.INSTANCE.SPAPI_Poll();
+		
+//		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
 		
 		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 
