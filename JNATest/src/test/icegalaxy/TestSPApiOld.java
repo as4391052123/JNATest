@@ -58,6 +58,8 @@ public class TestSPApiOld
 		void SPAPI_Poll();
 		
 		int  SPAPI_GetLoginStatus(short  host_id);
+		
+		void SPAPI_RegisterLoadTradeEnd(registerLoadTrade loadTrade);
 
 		//void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -269,6 +271,11 @@ public class TestSPApiOld
 	}
 	
 	
+	public interface registerLoadTrade extends Callback
+	{
+		void invoke(String accNo);
+	}
+	
 	public interface RegisterConnErr extends Callback
 	{
 		void invoke(short host_id, long link_err);
@@ -447,7 +454,9 @@ public class TestSPApiOld
 		int login = 1;
 		int logout = 1;
 		
-
+		
+		
+		registerLoadTrade loadTrade = (accNo) -> System.out.println("Registered LoadTradeEnd" + accNo);
 				
 		RegisterLoginStatusUpdate loginStatus = (status) -> System.out.println("Login Status Update: " + status);
 		
@@ -478,7 +487,9 @@ public class TestSPApiOld
 		
 		in = SPApiDll.INSTANCE.SPAPI_Initialize();
 		
-		SPApiDll.INSTANCE.SPAPI_Poll();
+		SPApiDll.INSTANCE.SPAPI_RegisterLoadTradeEnd(loadTrade);
+		
+		
 		
 //		SPApiDll.INSTANCE.SPAPI_SetBackgroundPoll(true);
 		
@@ -505,9 +516,11 @@ public class TestSPApiOld
 //		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
 
 //		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
+		 
+		 SPApiDll.INSTANCE.SPAPI_Poll();
 
 		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
-
+		
 		login = SPApiDll.INSTANCE.SPAPI_Login();
 		System.out.println("Logging in");
 
