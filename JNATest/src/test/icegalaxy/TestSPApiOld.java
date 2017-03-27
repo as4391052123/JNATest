@@ -87,6 +87,8 @@ public class TestSPApiOld
 
 		void SPAPI_RegisterPServerLinkStatusUpdate(RegisterConn conn);
 		
+		void SPAPI_RegisterConnectionErrorUpdate(RegisterConnErr connErr);
+		
 //		void SPAPI_RegisterOrderReport(RegisterOrder orderReport);
 
 
@@ -260,6 +262,12 @@ public class TestSPApiOld
 			}
 
 		}
+	}
+	
+	
+	public interface RegisterConnErr extends Callback
+	{
+		void invoke(short host_id, long link_err);
 	}
 	
 	public interface RegisterOrder extends Callback
@@ -444,6 +452,9 @@ public class TestSPApiOld
 		RegisterTradeReport tradeReport = (rec_no, trade) -> System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
 		
 		RegisterLoginReply loginReply = (ret_code, ret_msg) -> System.out.println("Login reply: " + ret_msg + " [" + ret_code + "]");
+		
+		RegisterConnErr connErr = (ret_code, ret_msg) -> System.out.println("ConnErr ret: " + ret_code + ", Ret_msg: " + ret_msg);
+		
 		//Try using lambda
 		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + ", Dec place: " + last.DecInPrice + " " );
 	
@@ -464,6 +475,8 @@ public class TestSPApiOld
 		SPApiDll.INSTANCE.SPAPI_RegisterPServerLinkStatusUpdate(conn);
 
 		 SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
+		 
+		 SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(connErr);
 
 //		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
 
