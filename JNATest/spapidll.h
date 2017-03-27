@@ -1,8 +1,5 @@
-#include <stdint.h>
-#include <iostream>
-#include <cassert>
-#include <vector>
-using namespace std;
+#ifndef spapidll_def
+#define spapidll_def
 
 typedef char            tinyint;
 typedef unsigned char   u_tinyint;
@@ -12,7 +9,6 @@ typedef unsigned int    u_int;
 typedef unsigned long   u_long;
 typedef __int64          bigint;
 typedef unsigned __int64 u_bigint;
-
 
 typedef char STR4[4];
 typedef char STR16[16];
@@ -24,7 +20,7 @@ typedef char STR40[40];
 #define STOP_UP         'U'
 #define STOP_DOWN       'D'
 
-#define AO_PRC          ((int32_t)0x7fffffff)
+#define AO_PRC          ((long)0x7fffffff)	//竞价//膙基
 
 #define ORD_LIMIT       0			//限价//基
 #define ORD_AUCTION     2			//拍卖价//╃芥基
@@ -84,10 +80,10 @@ typedef char STR40[40];
 
 typedef struct
 {
-    int32_t Qty;                    //上日仓位 //ら 
-    int32_t DepQty;                 //存储仓位 //纗  
-    int32_t LongQty;                //今日长仓 //さら 
-    int32_t ShortQty;               //今日短仓 //さら祏 
+    long Qty;                    //上日仓位 //ら 
+    long DepQty;                 //存储仓位 //纗  
+    long LongQty;                //今日长仓 //さら 
+    long ShortQty;               //今日短仓 //さら祏 
     double TotalAmt;             //上日成交 //らΘユ 
     double DepTotalAmt;          //上日持仓总数(数量*价格) //ら羆计(计秖*基) 
     double LongTotalAmt;         //今日长仓总数(数量*价格) //さら羆计(计秖*基) 
@@ -110,14 +106,14 @@ typedef struct
     double DownLevel;          //下限水平 //キ 
     double DownPrice;          //下限价格 //基 
     bigint ExtOrderNo;         //外部指示 //场ボ 
-    int32_t IntOrderNo;           //用户订单编号 //ノめ璹虫絪腹 
-    int32_t Qty;                  //剩下數量 //逞计秖
-    int32_t TradedQty;            //已成交数量 //Θユ计秖 
-    int32_t TotalQty;             //订单总数量//璹虫羆计秖 2012-12-20 xiaolin
-    int32_t ValidTime;            //有效时间 //Τ丁 
-    int32_t SchedTime;            //预订发送时间 //箇璹祇癳丁 
-    int32_t TimeStamp;            //服务器接收订单时间 //狝叭竟钡Μ璹虫丁 
-    uint32_t OrderOptions;       //如果该合约支持收市后期货交易时段(T+1),可将此属性设为:1 //狦赣やΜカ戳砯ユ琿(T+1),盢妮┦砞:1 
+    long IntOrderNo;           //用户订单编号 //ノめ璹虫絪腹 
+    long Qty;                  //剩下數量 //逞计秖
+    long TradedQty;            //已成交数量 //Θユ计秖 
+    long TotalQty;             //订单总数量//璹虫羆计秖 2012-12-20 xiaolin
+    long ValidTime;            //有效时间 //Τ丁 
+    long SchedTime;            //预订发送时间 //箇璹祇癳丁 
+    long TimeStamp;            //服务器接收订单时间 //狝叭竟钡Μ璹虫丁 
+    u_long OrderOptions;       //如果该合约支持收市后期货交易时段(T+1),可将此属性设为:1 //狦赣やΜカ戳砯ユ琿(T+1),盢妮┦砞:1 
     STR16 AccNo;               //用户帐号 //ノめ眀腹 
     STR16 ProdCode;            //合约代号 //腹 
     STR16 Initiator;           //下单用户 //虫ノめ  
@@ -133,43 +129,19 @@ typedef struct
     tinyint ValidType;         //订单有效类型 //璹虫Τ摸 
     tinyint Status;            //状态 //篈 
     tinyint DecInPrice;        //合约小数位 //计 
-	tinyint OrderAction;
-	int32_t UpdateTime;
-	int32_t UpdateSeqNo;
 } SPApiOrder;
 
 typedef struct
 {
-    bigint BidExtOrderNo;   //Bid(买)单外部指示
-    bigint AskExtOrderNo;   //Ask(沽)单外部指示
-    long BidAccOrderNo;     //Bid(买)单编号
-    long AskAccOrderNo;     //Ask(沽)单编号
-    double BidPrice;          //Bid(买)单价格
-    double AskPrice;          //Ask(沽)单价格
-    long BidQty;            //Bid(买)单数量
-    long AskQty;            //Ask(沽)单数量
-    long SpecTime;          //预订发送时间 //箇璹祇癳丁 
-   	u_long OrderOptions;    //0=默认,1=T+1
-    STR16 ProdCode;         //合约代号 //腹 
-    STR16 AccNo;            //用户帐号 //ノめ眀腹 
-	STR40 ClOrderId;
-    STR40 OrigClOrdId;
-    tinyint OrderType;      //订单类型 //璹虫摸  
-    tinyint ValidType;      //订单有效类型 //璹虫Τ摸 
-    tinyint DecInPrice;     //合约小数位 //计 
-} SPApiMMOrder;
-
-typedef struct
-{
-	int32_t RecNo;		   //成交记录
+	long RecNo;		   //成交记录
     double Price;              //成交价格 //Θユ基
-	//double AvgPrice;           //成交均价 淘汰用AvgTradedPrice代替了
+	double AvgPrice;           //成交均价
     bigint TradeNo;            //成交编号 //Θユ絪腹
     bigint ExtOrderNo;         //外部指示 //场ボ
-    int32_t IntOrderNo;           //用户订单编号 //ノめ璹虫絪腹
-    int32_t Qty;                  //成交数量 //Θユ计秖
-    int32_t TradeDate;            //成交日期 //Θユら戳
-    int32_t TradeTime;            //成交时间 //Θユ丁
+    long IntOrderNo;           //用户订单编号 //ノめ璹虫絪腹
+    long Qty;                  //成交数量 //Θユ计秖
+    long TradeDate;            //成交日期 //Θユら戳
+    long TradeTime;            //成交时间 //Θユ丁
     STR16 AccNo;               //用户 //ノめ
     STR16 ProdCode;            //合约代码 //絏
     STR16 Initiator;           //下单用户 //虫ノめ
@@ -181,13 +153,6 @@ typedef struct
     char OpenClose;            //开平仓 //秨キ
     tinyint Status;            //状态 //篈
     tinyint DecInPrice;        //小数位 //计
-	double OrderPrice;
-	STR40 TradeRef;
-	int32_t TotalQty;
-	int32_t RemainingQty;
-	int32_t TradedQty;
-	double AvgTradedPrice;
-
 } SPApiTrade;
 
 #define REQMODE_UNSUBSCRIBE     0
@@ -198,7 +163,7 @@ typedef struct
 typedef struct
 {
     double Margin;			//保证金//玂靡
-    double ContractSize;		//合约价值//基
+    long ContractSize;		//合约价值//基
     STR16 MarketCode;		//交易所代码 //カ初絏
     STR16 InstCode;			//产品系列代码 //玻珇╰絏
     STR40 InstName;			//英文名称 //璣ゅ嘿
@@ -216,14 +181,14 @@ typedef struct
    STR40 ProdName;			//产品英文名称 //玻珇璣ゅ嘿
    STR16 Underlying;		//关联的期货合约//闽羛戳砯
    STR16 InstCode;			//产品系列名称 //玻珇╰嘿
-   int32_t ExpiryDate;			//产品到期时间 //玻珇戳丁
+   long ExpiryDate;			//产品到期时间 //玻珇戳丁
    char CallPut;			//期权方向认购与认沽 //戳舦よ粄潦籔粄猣
-   int32_t Strike;				//期权行使价//戳舦︽ㄏ基
-   int32_t LotSize;			//手数//も计
+   long Strike;				//期权行使价//戳舦︽ㄏ基
+   long LotSize;			//手数//も计
    STR40 ProdName1;			//产品繁体名称 //玻珇羉砰嘿
    STR40 ProdName2;			//产品简体名称 //玻珇虏砰嘿
    char OptStyle;			//期权的类型//戳舦摸
-   int32_t TickSize;			//产品价格最小变化位数//玻珇基程跑て计
+   long TickSize;			//产品价格最小变化位数//玻珇基程跑て计
 }SPApiProduct;
 
 #define SP_MAX_DEPTH    20
@@ -231,40 +196,34 @@ typedef struct
 typedef struct
 {
     double Bid[SP_MAX_DEPTH];     //买入价 //禦基
-    int32_t BidQty[SP_MAX_DEPTH];    //买入量 //禦秖
-    int32_t BidTicket[SP_MAX_DEPTH]; //买指令数量 //禦计秖
+    long BidQty[SP_MAX_DEPTH];    //买入量 //禦秖
+    long BidTicket[SP_MAX_DEPTH]; //买指令数量 //禦计秖
     double Ask[SP_MAX_DEPTH];     //卖出价 //芥基
-    int32_t AskQty[SP_MAX_DEPTH];    //卖出量 //芥秖
-    int32_t AskTicket[SP_MAX_DEPTH]; //卖指令数量 //芥计秖
+    long AskQty[SP_MAX_DEPTH];    //卖出量 //芥秖
+    long AskTicket[SP_MAX_DEPTH]; //卖指令数量 //芥计秖
     double Last[SP_MAX_LAST];     //成交价 //Θユ基
-    int32_t LastQty[SP_MAX_LAST];    //成交数量 //Θユ计秖
-    int32_t LastTime[SP_MAX_LAST];   //成交时间 //Θユ丁
+    long LastQty[SP_MAX_LAST];    //成交数量 //Θユ计秖
+    long LastTime[SP_MAX_LAST];   //成交时间 //Θユ丁
     double Equil;                 //平衡价 //キ颗基
     double Open;                  //开盘价 //秨絃基
     double High;                  //最高价 //程蔼基
     double Low;                   //最低价 //程基
     double Close;                 //收盘价 //Μ絃基
-    int32_t CloseDate;               //收市日期 //Μカら戳
+    long CloseDate;               //收市日期 //Μカら戳
     double TurnoverVol;           //总成交量 //羆Θユ秖
     double TurnoverAmt;           //总成交额 //羆Θユ肂
-    int32_t OpenInt;                 //未平仓 //ゼキ
+    long OpenInt;                 //未平仓 //ゼキ
     STR16 ProdCode;               //合约代码 //絏
     STR40 ProdName;               //合约名称 //嘿
     char DecInPrice;              //合约小数位 //计
-	int32_t ExStateNo;            //港期市场状态
-	int32_t TradeStateNo;         //市场状况
-	bool Suspend;                 //股票-是否已停牌
-	int32_t ExpiryYMD;            //产品到期日期
- 	int32_t ContractYMD;          //合约到期日期
-	int32_t Timestamp;
 } SPApiPrice;
 
 typedef struct
 {
     double Price;              //价格 //基
-    int32_t Qty;                  //成交量 //Θユ秖
-    int32_t TickerTime;           //时间 //丁
-    int32_t DealSrc;              //来源 //ㄓ方
+    long Qty;                  //成交量 //Θユ秖
+    long TickerTime;           //时间 //丁
+    long DealSrc;              //来源 //ㄓ方
     STR16 ProdCode;            //合约代码 //絏
     char DecInPrice;           //小数位 //计
 } SPApiTicker;
@@ -317,116 +276,104 @@ typedef struct
     double Rate;
 } SPApiCcyRate;
 
-#define SPDLLCALL __stdcall
 
+#define SPDLLCALL __stdcall
 /*回调方法*/
 typedef void (SPDLLCALL *LoginReplyAddr)(long ret_code, char *ret_msg);
-typedef void (SPDLLCALL *ConnectedReplyAddr)(long host_type, long con_status);
+typedef void (SPDLLCALL *LogoutReplyAddr)(long ret_code, char *ret_msg);
+typedef void (SPDLLCALL *LoginStatusUpdateAddr)(long login_status);
+typedef void (SPDLLCALL *LoginAccInfoAddr)(char *acc_no, int max_bal, int max_pos, int max_order);
 typedef void (SPDLLCALL *ApiOrderRequestFailedAddr)(tinyint action, SPApiOrder *order, long err_code, char *err_msg);
 typedef void (SPDLLCALL *ApiOrderReportAddr)(long rec_no, SPApiOrder *order);
-typedef void (SPDLLCALL *ApiOrderBeforeSendReportAddr)(SPApiOrder *order);
-typedef void (SPDLLCALL *AccountLoginReplyAddr)(char *accNo, long ret_code, char* ret_msg);
-typedef void (SPDLLCALL *AccountLogoutReplyAddr)(long ret_code, char* ret_msg);
-typedef void (SPDLLCALL *AccountInfoPushAddr)(SPApiAccInfo *acc_info);
-typedef void (SPDLLCALL *AccountPositionPushAddr)(SPApiPos *pos);
-typedef void (SPDLLCALL *UpdatedAccountPositionPushAddr)(SPApiPos *pos);
-typedef void (SPDLLCALL *UpdatedAccountBalancePushAddr)(SPApiAccBal *acc_bal);
 typedef void (SPDLLCALL *ApiTradeReportAddr)(long rec_no, SPApiTrade *trade);
-typedef void (SPDLLCALL *ApiLoadTradeReadyPushAddr)(long rec_no, SPApiTrade *trade);
+typedef void (SPDLLCALL *LoadTradeEndAddr)(char *acc_no);
+typedef void (SPDLLCALL *LoadAETradeEndAddr)();
 typedef void (SPDLLCALL *ApiPriceUpdateAddr)(SPApiPrice *price);
 typedef void (SPDLLCALL *ApiTickerUpdateAddr)(SPApiTicker *ticker);
+typedef void (SPDLLCALL *PServerLinkStatusUpdateAddr)(short host_id, long con_status);
+typedef void (SPDLLCALL *ConnectionErrorAddr)(short host_id, long link_err);
+typedef void (SPDLLCALL *InstrumentListReplyAddr)(bool is_ready, char *ret_msg);
 typedef void (SPDLLCALL *PswChangeReplyAddr)(long ret_code, char *ret_msg);
 typedef void (SPDLLCALL *ProductListByCodeReplyAddr)(char *inst_code, bool is_ready, char *ret_msg);
-typedef void (SPDLLCALL *InstrumentListReplyAddr)(bool is_ready, char *ret_msg);
 typedef void (SPDLLCALL *BusinessDateReplyAddr)(long business_date);
-typedef void (SPDLLCALL *ApiMMOrderBeforeSendReportAddr)(SPApiMMOrder *mm_order);
-typedef void (SPDLLCALL *ApiMMOrderRequestFailedAddr)(SPApiMMOrder *mm_order, long err_code, char *err_msg);
-typedef void (SPDLLCALL *ApiQuoteRequestReceivedAddr)(char *product_code, char buy_sell, long qty);
-typedef void (SPDLLCALL *AccountControlReplyAddr)(long ret_code, char *ret_msg);
-
 
 typedef void (SPDLLCALL *p_SPAPI_RegisterLoginReply)(LoginReplyAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterConnectingReply)(ConnectedReplyAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterOrderReport)(ApiOrderReportAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterLogoutReply)(LogoutReplyAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterLoginStatusUpdate)(LoginStatusUpdateAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterLoginAccInfo)(LoginAccInfoAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterOrderRequestFailed)(ApiOrderRequestFailedAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterOrderBeforeSendReport)(ApiOrderBeforeSendReportAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterAccountLoginReply)(AccountLoginReplyAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterAccountLogoutReply)(AccountLogoutReplyAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterAccountInfoPush)(AccountInfoPushAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterAccountPositionPush)(AccountPositionPushAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterUpdatedAccountPositionPush)(UpdatedAccountPositionPushAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterUpdatedAccountBalancePush)(UpdatedAccountBalancePushAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterOrderReport)(ApiOrderReportAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterTradeReport)(ApiTradeReportAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterLoadTradeReadyPush)(ApiLoadTradeReadyPushAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterLoadTradeEnd)(LoadTradeEndAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterLoadAETradeEnd)(LoadAETradeEndAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterApiPriceUpdate)(ApiPriceUpdateAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterTickerUpdate)(ApiTickerUpdateAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterPServerLinkStatusUpdate)(PServerLinkStatusUpdateAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterConnectionErrorUpdate)(ConnectionErrorAddr addr);
+typedef void (SPDLLCALL *p_SPAPI_RegisterInstrumentListReply)(InstrumentListReplyAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterPswChangeReply)(PswChangeReplyAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterProductListByCodeReply)(ProductListByCodeReplyAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterInstrumentListReply)(InstrumentListReplyAddr addr);
 typedef void (SPDLLCALL *p_SPAPI_RegisterBusinessDateReply)(BusinessDateReplyAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterMMOrderRequestFailed)(ApiMMOrderRequestFailedAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterMMOrderBeforeSendReport)(ApiMMOrderBeforeSendReportAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterQuoteRequestReceivedReport)(ApiQuoteRequestReceivedAddr addr);
-typedef void (SPDLLCALL *p_SPAPI_RegisterAccountControlReply)(AccountControlReplyAddr addr);
 
-typedef int  (SPDLLCALL *p_SPAPI_Initialize)();
+/*请求方法*/
+typedef double (SPDLLCALL *p_SPAPI_GetDLLVersion)();
+typedef int (SPDLLCALL *p_SPAPI_Initialize)();
+typedef int (SPDLLCALL *p_SPAPI_Uninitialize)();
+typedef void (SPDLLCALL *p_SPAPI_Poll)();
+typedef void (SPDLLCALL *p_SPAPI_SetBackgroundPoll)(bool onoff);
 typedef void (SPDLLCALL *p_SPAPI_SetLoginInfo)(char *host, int port, char *license, char *app_id, char *user_id, char *password);
-typedef int  (SPDLLCALL *p_SPAPI_Login)();
-typedef int  (SPDLLCALL *p_SPAPI_GetLoginStatus)(char *user_id, short host_id);
-typedef int  (SPDLLCALL *p_SPAPI_AddOrder)(SPApiOrder *order);
-typedef int (SPDLLCALL *p_SPAPI_AddInactiveOrder)(SPApiOrder* order);
-typedef int (SPDLLCALL *p_SPAPI_ChangeOrder)(char *user_id, SPApiOrder* order, double org_price, long org_qty);
-typedef int (SPDLLCALL *p_SPAPI_ChangeOrderBy)(char *user_id, char *acc_no, long accOrderNo, double org_price, long org_qty, double newPrice, long newQty);
-typedef int (SPDLLCALL *p_SPAPI_DeleteOrderBy)(char *user_id, char *acc_no, long accOrderNo, char* productCode, char* clOrderId);
-typedef int (SPDLLCALL *p_SPAPI_DeleteAllOrders)(char *user_id, char *acc_no);
-typedef int (SPDLLCALL *p_SPAPI_ActivateAllOrders)(char *user_id, char *acc_no);
-typedef int (SPDLLCALL *p_SPAPI_InactivateAllOrders)(char *user_id, char *acc_no);
-typedef int (SPDLLCALL *p_SPAPI_ActivateOrderBy)(char *user_id, char *acc_no, long accOrderNo);
-typedef int (SPDLLCALL *p_SPAPI_InactivateOrderBy)(char *user_id, char *acc_no, long accOrderNo);
-typedef int  (SPDLLCALL *p_SPAPI_GetOrderCount)(char *user_id, char* acc_no);
-typedef int  (SPDLLCALL *p_SPAPI_GetOrderByOrderNo)(char *user_id, char *acc_no, long int_order_no, SPApiOrder *order);
-typedef int (SPDLLCALL *p_SPAPI_GetActiveOrders)(char *user_id, char *acc_no, vector<SPApiOrder>& apiOrderList);
-typedef int  (SPDLLCALL *p_SPAPI_GetPosCount)(char *user_id);
-typedef int  (SPDLLCALL *p_SPAPI_GetPosByProduct)(char *user_id, char *prod_code, SPApiPos *pos);
-typedef void (SPDLLCALL *p_SPAPI_Uninitialize)();
-typedef int (SPDLLCALL *p_SPAPI_Logout)(char *user_id);
-typedef int (SPDLLCALL *p_SPAPI_AccountLogin)(char *user_id, char *acc_no);
-typedef int (SPDLLCALL *p_SPAPI_AccountLogout)(char *user_id, char *acc_no);
-typedef int  (SPDLLCALL *p_SPAPI_GetTradeCount)(char *user_id, char *acc_no);
-typedef int (SPDLLCALL *p_SPAPI_GetAllTrades)(char *user_id, char *acc_no, vector<SPApiTrade>& apiTradeList);
-typedef int (SPDLLCALL *p_SPAPI_SubscribePrice)(char *user_id, char *prod_code, int mode);
-typedef int (SPDLLCALL *p_SPAPI_SubscribeTicker)(char *user_id, char *prod_code, int mode);
-typedef int (SPDLLCALL *p_SPAPI_ChangePassword)(char *user_id, char *old_password, char *new_password);
-typedef int (SPDLLCALL *p_SPAPI_GetDllVersion)(char *dll_ver_no, char *dll_rel_no, char *dll_suffix);
-typedef int  (SPDLLCALL *p_SPAPI_GetAccBalCount)(char* user_id);
-typedef int  (SPDLLCALL *p_SPAPI_GetAccBalByCurrency)(char *user_id, char *ccy, SPApiAccBal *acc_bal);
-typedef int  (SPDLLCALL *p_SPAPI_GetAllAccBal)(char *user_id, vector<SPApiAccBal>& apiAccBalList);
-typedef int  (SPDLLCALL *p_SPAPI_GetCcyRateByCcy)(char *user_id, char *ccy, double &rate);
-typedef int (SPDLLCALL *p_SPAPI_GetAccInfo)(char *user_id, SPApiAccInfo *acc_info);
-typedef int (SPDLLCALL *p_SPAPI_GetPriceByCode)(char *user_id, char *prod_code, SPApiPrice *price);
-typedef int (SPDLLCALL *p_SPAPI_SetApiLogPath)(char *path);
+typedef int (SPDLLCALL *p_SPAPI_Login)();
+typedef int (SPDLLCALL *p_SPAPI_Logout)();
+typedef int (SPDLLCALL *p_SPAPI_GetLoginStatus)(short host_id);
 
-typedef int (SPDLLCALL *p_SPAPI_LoadProductInfoListByCode)(char *inst_code);
+typedef int (SPDLLCALL *p_SPAPI_AddOrder)(SPApiOrder *order);
+typedef int (SPDLLCALL *p_SPAPI_ChangeOrder)(SPApiOrder *order, double org_price, long org_qty);
+typedef int (SPDLLCALL *p_SPAPI_DeleteOrder)(SPApiOrder *order);
+typedef int (SPDLLCALL *p_SPAPI_ActivateOrder)(SPApiOrder *order);
+typedef int (SPDLLCALL *p_SPAPI_InactivateOrder)(SPApiOrder *order);
+typedef int (SPDLLCALL *p_SPAPI_GetOrderCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetOrder)(int idx, SPApiOrder *order);
+typedef int (SPDLLCALL *p_SPAPI_GetOrderByOrderNo)(char *acc_no, long int_order_no, SPApiOrder *order);  
+typedef int (SPDLLCALL *p_SPAPI_GetPosCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetPos)(int idx, SPApiPos *pos);
+typedef int (SPDLLCALL *p_SPAPI_GetPosByProduct)(char *prod_code, SPApiPos *pos);
+typedef int (SPDLLCALL *p_SPAPI_GetTradeCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetTrade)(int idx, SPApiTrade *trade);
+typedef int (SPDLLCALL *p_SPAPI_GetTradeByTradeNo)(long int_order_no, bigint trade_no, SPApiTrade *trade);
+
+typedef int (SPDLLCALL *p_SPAPI_SubscribePrice)(char *prod_code, int mode);
+typedef int (SPDLLCALL *p_SPAPI_GetPriceCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetPrice)(int idx, SPApiPrice *price);
+typedef int (SPDLLCALL *p_SPAPI_GetPriceByCode)(char *prod_code, SPApiPrice *price);
+
+typedef int (SPDLLCALL *p_SPAPI_GetInstrumentCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetInstrument)(int idx, SPApiInstrument *inst);
+typedef int (SPDLLCALL *p_SPAPI_GetInstrumentByCode)(char *inst_code, SPApiInstrument *inst);
+
 typedef int (SPDLLCALL *p_SPAPI_GetProductCount)();
-typedef int (SPDLLCALL *p_SPAPI_GetProduct)(vector<SPApiProduct>& apiProdList);
+typedef int (SPDLLCALL *p_SPAPI_GetProduct)(int idx, SPApiProduct *prod);
 typedef int (SPDLLCALL *p_SPAPI_GetProductByCode)(char *prod_code, SPApiProduct *prod);
 
+typedef int (SPDLLCALL *p_SPAPI_SubscribeTicker)(char *prod_code, int mode);
+typedef int (SPDLLCALL *p_SPAPI_GetAccInfo)(SPApiAccInfo *acc_info);
+typedef int (SPDLLCALL *p_SPAPI_GetAccBalCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetAccBal)(int idx, SPApiAccBal *acc_bal);
+typedef int (SPDLLCALL *p_SPAPI_GetAccBalByCurrency)(char *ccy, SPApiAccBal *acc_bal);
+typedef int (SPDLLCALL *p_SPAPI_GetDllVersion)(char *dll_ver_no, char *dll_rel_no, char *dll_suffix);
+
+typedef int (SPDLLCALL *p_SPAPI_LoadOrderReport)(char *acc_no);
+typedef int (SPDLLCALL *p_SPAPI_LoadTradeReport)(char *acc_no);
 typedef int (SPDLLCALL *p_SPAPI_LoadInstrumentList)();
-typedef int (SPDLLCALL *p_SPAPI_GetInstrumentCount)();
-typedef int (SPDLLCALL *p_SPAPI_GetInstrument)(vector<SPApiInstrument>& apiInstList);
-typedef int (SPDLLCALL *p_SPAPI_GetInstrumentByCode)(char *inst_code, SPApiInstrument *inst);
-typedef int (SPDLLCALL *p_SPAPI_SetLanguageId)(int langid);
+typedef int (SPDLLCALL *p_SPAPI_LoadProductInfoListByCode)(char *inst_code);
 
-typedef int (SPDLLCALL *p_SPAPI_SendMarketMakingOrder)(char *user_id, SPApiMMOrder *mm_order);
-typedef int (SPDLLCALL *p_SPAPI_SubscribeQuoteRequest)(char *user_id, char *prod_code, int mode);
-typedef int (SPDLLCALL *p_SPAPI_SubscribeAllQuoteRequest)(char *user_id, int mode);
+typedef int (SPDLLCALL *p_SPAPI_ChangePassword)(char *old_psw, char *new_psw);
+typedef int (SPDLLCALL *p_SPAPI_AccountLogin)(char *acc_no);
+typedef int (SPDLLCALL *p_SPAPI_AccountLogout)(char *acc_no);
+typedef int (SPDLLCALL *p_SPAPI_SetApiLogPath)(char *path);
+typedef int (SPDLLCALL *p_SPAPI_SendAccControl)(char *acc_no, char ctrl_mask, char ctrl_level);
+typedef int (SPDLLCALL *p_SPAPI_GetCcyRateCount)();
+typedef int (SPDLLCALL *p_SPAPI_GetCcyRate)(int idx, SPApiCcyRate *ccy_rate);
+typedef int (SPDLLCALL *p_SPAPI_GetCcyRateByCcy)(char *ccy, double &rate);
 
-typedef int (SPDLLCALL *p_SPAPI_GetAllTradesByArray)(char *user_id, char *acc_no, SPApiTrade* apiTradeList);
-typedef int (SPDLLCALL *p_SPAPI_GetOrdersByArray)(char *user_id, char *acc_no, SPApiOrder* apiOrderList);
-typedef int (SPDLLCALL *p_SPAPI_GetAllAccBalByArray)(char *user_id, SPApiAccBal* apiAccBalList);
-typedef int (SPDLLCALL *p_SPAPI_GetInstrumentByArray)(SPApiInstrument* apiInstList);
-typedef int (SPDLLCALL *p_SPAPI_GetProductByArray)(SPApiProduct* apiProdList);
+#endif
 
-typedef int (SPDLLCALL *p_SPAPI_GetAllPos)(char *user_id, vector<SPApiPos>& apiPosList);
-typedef int (SPDLLCALL *p_SPAPI_GetAllPosByArray)(char *user_id, SPApiPos* apiPosList);
-typedef int (SPDLLCALL *p_SPAPI_SendAccControl)(char *user_id, char *acc_no, char ctrl_mask, char ctrl_level);
