@@ -48,8 +48,15 @@ public class TestSPApi
 	static String userid = "DEMO201702141";
 	static String password = "00000000";
 	static String server = "demo.spsystem.info";
+	
+	public interface Uninit extends Library
+	{
+		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 
-	public interface SPApiDll extends StdCallCallback
+		int SPAPI_Uninitialize();
+	}
+
+	public interface SPApiDll extends Library
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 
@@ -582,7 +589,7 @@ public class TestSPApi
 
 		System.out.println("logout: " + logout);
 
-		un = SPApiDll.INSTANCE.SPAPI_Uninitialize();
+		un = Uninit.INSTANCE.SPAPI_Uninitialize();
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);
