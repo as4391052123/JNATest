@@ -10,6 +10,7 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 
 import com.sun.jna.Structure;
+import com.sun.jna.win32.StdCallLibrary;
 
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiAccInfo;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
@@ -33,21 +34,21 @@ public class TestSPApi
 	// String password = "ting1980";
 	// String server = "futures.bsgroup.com.hk";
 
-	static int port = 8080;
-	static String license = "58BA6E2F967DE";
-	static String app_id = "SPDEMO";
-	static String userid = "DEMO201703047";
-	static String password = "830811aa";
-	static String server = "demo.spsystem.info";
+//	static int port = 8080;
+//	static String license = "58BA6E2F967DE";
+//	static String app_id = "SPDEMO";
+//	static String userid = "DEMO201703047";
+//	static String password = "830811aa";
+//	static String server = "demo.spsystem.info";
 	
-/*	static int port = 8080;
+	static int port = 8080;
 	static String license = "58A665DE84D02";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201702141";
 	static String password = "00000000";
-	static String server = "demo.spsystem.info";*/
+	static String server = "demo.spsystem.info";
 
-	public interface SPApiDll extends Library
+	public interface SPApiDll extends StdCallLibrary
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 
