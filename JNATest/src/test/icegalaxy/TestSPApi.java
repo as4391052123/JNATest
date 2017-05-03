@@ -11,6 +11,7 @@ import com.sun.jna.Native;
 
 import com.sun.jna.Structure;
 import com.sun.jna.win32.StdCallLibrary;
+import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
 
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiAccInfo;
 import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
@@ -54,7 +55,7 @@ public class TestSPApi
 
 		int SPAPI_Initialize();
 
-		void SPAPI_Uninitialize();
+		int SPAPI_Uninitialize();
 
 		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -261,6 +262,10 @@ public class TestSPApi
 		}
 	}
 	
+	public interface p_SPAPI_Uninitialize extends StdCallCallback {
+		void apply();
+	};
+	
 	public interface RegisterOrder extends Callback
 	{
 		void invoke(long rec_no, SPApiOrder order);
@@ -434,6 +439,8 @@ public class TestSPApi
 		int login = 1;
 		int logout = 1;
 		
+		
+		
 		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
 		
 		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
@@ -575,7 +582,7 @@ public class TestSPApi
 
 		System.out.println("logout: " + logout);
 
-		SPApiDll.INSTANCE.SPAPI_Uninitialize();
+		un = SPApiDll.INSTANCE.SPAPI_Uninitialize();
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);
