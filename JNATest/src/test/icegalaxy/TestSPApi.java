@@ -49,7 +49,7 @@ public class TestSPApi
 	static String password = "00000000";
 	static String server = "demo.spsystem.info";
 
-	public interface SPApiDll extends StdCallLibrary
+	public interface SPApiDll extends StdCallCallback
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 
