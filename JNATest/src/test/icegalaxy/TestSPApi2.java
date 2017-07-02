@@ -56,7 +56,7 @@ public class TestSPApi2
 
 		int SPAPI_Initialize();
 
-		int SPAPI_Uninitialize();
+		int SPAPI_Uninitialize(String user_id);
 
 		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -459,7 +459,7 @@ public class TestSPApi2
 
 //		System.out.println("logout: " + logout);
 
-		SPApiDll.INSTANCE.SPAPI_Uninitialize();
+		SPApiDll.INSTANCE.SPAPI_Uninitialize(userid);
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);
