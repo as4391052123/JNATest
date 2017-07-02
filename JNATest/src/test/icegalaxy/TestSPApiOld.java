@@ -10,6 +10,7 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 
 import com.sun.jna.Structure;
+import com.sun.jna.win32.StdCallLibrary;
 
 import test.icegalaxy.TestSPApiOld.SPApiDll.SPApiAccInfo;
 import test.icegalaxy.TestSPApiOld.SPApiDll.SPApiOrder;
@@ -27,7 +28,7 @@ public class TestSPApiOld
 	public static double currentBid;
 	public static double currentAsk;
 
-	static byte[] product = getBytes("CLJ7", 16);
+	static byte[] product = getBytes("CLQ7", 16);
 
 	/*static int port = 8080;
 	static String license = "76C2FB5B60006C7A";
@@ -50,7 +51,7 @@ public class TestSPApiOld
 	static String password = "00000000";
 	static String server = "demo.spsystem.info";
 
-	public interface SPApiDll extends Library
+	public interface SPApiDll extends StdCallLibrary
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidll64.dll", SPApiDll.class);
 
@@ -463,7 +464,7 @@ public class TestSPApiOld
 		int login = 1;
 		int logout = 1;
 		
-		
+		//Lambda
 		
 		registerLoadTrade loadTrade = (accNo) -> System.out.println("Registered LoadTradeEnd" + accNo);
 		
