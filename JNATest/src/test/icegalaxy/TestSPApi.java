@@ -56,7 +56,7 @@ public class TestSPApi
 		int SPAPI_Uninitialize();
 	}
 
-	public interface SPApiDll extends Library
+	public interface SPApiDll extends StdCallLibrary
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 
@@ -273,49 +273,49 @@ public class TestSPApi
 		void apply();
 	};
 	
-	public interface RegisterOrder extends Callback
+	public interface RegisterOrder extends StdCallCallback
 	{
 		void invoke(long rec_no, SPApiOrder order);
 	}
 
-	public interface RegisterOrderB4 extends Callback
+	public interface RegisterOrderB4 extends StdCallCallback
 	{
 		void invoke(SPApiOrder order);
 	}
 
-	public interface RegisterOrderFail extends Callback
+	public interface RegisterOrderFail extends StdCallCallback
 	{
 		void invoke(int action, SPApiOrder order, long err_code, String err_msg);
 	}
 
-	public interface RegisterTradeReport extends Callback
+	public interface RegisterTradeReport extends StdCallCallback
 	{
 		void invoke(long rec_no, SPApiTrade trade);
 	}
 
 	
 
-	public interface RegisterPriceUpdate extends Callback
+	public interface RegisterPriceUpdate extends StdCallCallback
 	{
 		void invoke(SPApiPrice price);
 	}
 
-	public interface RegisterConn extends Callback
+	public interface RegisterConn extends StdCallCallback
 	{
 		void invoke(long host_type, long con_status);
 	}
 
-	public interface RegisterError extends Callback
+	public interface RegisterError extends StdCallCallback
 	{
 		void invoke(short host_id, long link_err);
 	}
 
-	public interface RegisterLoginReply extends Callback
+	public interface RegisterLoginReply extends StdCallCallback
 	{
 		void printLoginStatus(long ret_code, String ret_msg);
 	}
 
-	public interface RegisterLoginStatusUpdate extends Callback
+	public interface RegisterLoginStatusUpdate extends StdCallCallback
 	{
 		void printStatus(long login_status);
 	}
@@ -589,7 +589,7 @@ public class TestSPApi
 
 		System.out.println("logout: " + logout);
 
-		un = Uninit.INSTANCE.SPAPI_Uninitialize();
+		un = SPApiDll.INSTANCE.SPAPI_Uninitialize();
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);
