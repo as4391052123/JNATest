@@ -10,6 +10,7 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 
 import com.sun.jna.Structure;
+import com.sun.jna.win32.StdCallLibrary;
 
 import test.icegalaxy.TestSPApi2.SPApiDll.SPApiAccInfo;
 import test.icegalaxy.TestSPApi2.SPApiDll.SPApiOrder;
@@ -47,7 +48,7 @@ public class TestSPApi2
 	static String password = "00000000";
 	static String server = "demo.spsystem.info";*/
 
-	public interface SPApiDll extends Library
+	public interface SPApiDll extends StdCallLibrary
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 		
