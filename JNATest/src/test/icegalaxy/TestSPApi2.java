@@ -56,7 +56,7 @@ public class TestSPApi2
 
 		int SPAPI_Initialize();
 
-		void SPAPI_Uninitialize();
+		int SPAPI_Uninitialize();
 
 		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -440,7 +440,7 @@ public class TestSPApi2
 		{
 			sleep(1000);
 			counter++;
-			if (counter > 10)
+			if (counter > 3)
 				break;
 		}
 
