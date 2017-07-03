@@ -26,7 +26,7 @@ public class TestSPApi
 	public static double currentBid;
 	public static double currentAsk;
 
-	static byte[] product = getBytes("CLK7", 16);
+	static byte[] product = getBytes("CLQ7", 16);
 
 	// int port = 8080;
 	// String license = "76C2FB5B60006C7A";
