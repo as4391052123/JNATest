@@ -346,25 +346,24 @@ public class TestSPApi
 		return i;
 	}
 
-	public static int addOrder(byte buy_sell)
+	public static int addOrder(byte buy_sell, byte open_close)
 	{
 
 		
 		int rc;
 		SPApiOrder order = new SPApiOrder();
 
-		// order.AccNo = Native.toByteArray("");
-		// order.ProdCode = Native.toByteArray("CLJ7");
 		setBytes(order.AccNo, userid);
 
 		order.ProdCode = product; // need the replace necessary byte one by one,
 									// not setting the whole new array
 
-		// order.Initiator = Native.toByteArray(userid + " ");
 		setBytes(order.Initiator, userid);
 
 		order.BuySell = buy_sell;
 
+		order.OpenClose = open_close;
+		
 		order.Qty = 2;
 
 //		setBytes(order.Ref, "Java");
@@ -538,7 +537,7 @@ public class TestSPApi
 
 		System.out.println("Test 3");
 		
-		addOrder((byte) 'B');
+		addOrder((byte) 'B', (byte) 'O');
 
 		System.out.println("Test 4");
 		
@@ -556,7 +555,7 @@ public class TestSPApi
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		addOrder((byte) 'S');
+		addOrder((byte) 'S', (byte) 'C');
 		
 		counter = 0;
 		
