@@ -35,19 +35,19 @@ public class TestSPApi
 	// String password = "ting1980";
 	// String server = "futures.bsgroup.com.hk";
 
-//	static int port = 8080;
-//	static String license = "58BA6E2F967DE";
-//	static String app_id = "SPDEMO";
-//	static String userid = "DEMO201703047";
-//	static String password = "830811aa";
-//	static String server = "demo.spsystem.info";
-	
 	static int port = 8080;
-	static String license = "58A665DE84D02";
+	static String license = "58BA6E2F967DE";
 	static String app_id = "SPDEMO";
-	static String userid = "DEMO201702141";
-	static String password = "00000000";
+	static String userid = "DEMO201703047";
+	static String password = "830811aa";
 	static String server = "demo.spsystem.info";
+	
+//	static int port = 8080;
+//	static String license = "58A665DE84D02";
+//	static String app_id = "SPDEMO";
+//	static String userid = "DEMO201702141";
+//	static String password = "00000000";
+//	static String server = "demo.spsystem.info";
 	
 	public interface Uninit extends Library
 	{
@@ -220,6 +220,7 @@ public class TestSPApi
 
 		public class SPApiOrder extends Structure
 		{
+			
 
 			public double Price;
 			public double StopLevel;
@@ -346,7 +347,7 @@ public class TestSPApi
 		return i;
 	}
 
-	public static int addOrder(byte buy_sell, byte open_close)
+	public static int addOrder(byte buy_sell)
 	{
 
 		
@@ -361,39 +362,37 @@ public class TestSPApi
 		setBytes(order.Initiator, userid);
 
 		order.BuySell = buy_sell;
-
-		order.OpenClose = open_close;
-		
+	
 		order.Qty = 2;
 
-//		setBytes(order.Ref, "Java");
-//		setBytes(order.Ref2, "SPAPI");
-		// order.Ref2 = Native.toByteArray("0");
-		// order.GatewayCode = Native.toByteArray("");
-//		setBytes(order.GatewayCode, "");
+		setBytes(order.Ref, "Java");
+		setBytes(order.Ref2, "SPAPI");
+		setBytes(order.GatewayCode, "");
+		
 
 		order.CondType = 0; // normal type
-		// order.ClOrderId = Native.toByteArray("0");
-//		setBytes(order.ClOrderId, "2");
+		setBytes(order.ClOrderId, "2");
 		order.ValidType = 0;
 
 		order.DecInPrice = 2;
 		
-		// order.StopType = '0';
+		order.StopType = 'L';
 		order.OrderType = 0; // limit
-		// order.OrderOptions = 0;
+		order.OrderOptions = 0;
 
 		getPriceByCode();
 
 		if (buy_sell == 'B')
 		{
 			order.Price = currentAsk; // market price
-			order.OpenClose = 'O';
+	//		order.OpenClose = 'O';
+			order.OpenClose = '\0';
 		}
 		else
 		{
 			order.Price = currentBid;
-			order.OpenClose = 'C';
+	//		order.OpenClose = 'C';
+			order.OpenClose = '\0';
 		}
 		
 	/*	if (buy_sell == 'B')
@@ -537,7 +536,7 @@ public class TestSPApi
 
 		System.out.println("Test 3");
 		
-		addOrder((byte) 'B', (byte) 'O');
+		addOrder((byte) 'B');
 
 		System.out.println("Test 4");
 		
@@ -555,7 +554,7 @@ public class TestSPApi
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		addOrder((byte) 'S', (byte) 'C');
+		addOrder((byte) 'S');
 		
 		counter = 0;
 		
