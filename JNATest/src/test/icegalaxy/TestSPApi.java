@@ -58,11 +58,11 @@ public class TestSPApi
 
 	public interface SPApiDll extends StdCallLibrary
 	{
+
+		
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
 		
-		SPApiDll SYNC_INSTANCE = (SPApiDll)
-		
-		Native.synchronizedLibrary(INSTANCE);
+		SPApiDll SYNC_INSTANCE = (SPApiDll) Native.synchronizedLibrary(INSTANCE);
 
 		int SPAPI_Initialize();
 
@@ -351,11 +351,11 @@ public class TestSPApi
 		return i;
 	}
 
-	public static int addOrder(byte buy_sell)
+	public static SPApiOrder addOrder(byte buy_sell)
 	{
 
-		
-		int rc;
+//		
+//		int rc;
 		SPApiOrder order = new SPApiOrder();
 
 		setBytes(order.AccNo, userid);
@@ -404,16 +404,14 @@ public class TestSPApi
 		else
 			order.Price = 60;*/
 
-		rc = SPApiDll.INSTANCE.SPAPI_AddOrder(order);
-
-		System.out.println("Add order: " + buy_sell + "[" + rc + "]");
+	
 
 		// System.out.println("Activate all orders: [" +
 		// SPApiDll.INSTANCE.SPAPI_ActivateAllOrders(userid, userid) + "]");
 
 		// System.out.println("order status: " + order.Status);
 
-		return rc;
+		return order;
 		// if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add
 		// Order Success!"); }
 		// else { if (DllShowTextData != null) DllShowTextData("Add Order
@@ -540,7 +538,9 @@ public class TestSPApi
 
 		System.out.println("Test 3");
 		
-		addOrder((byte) 'B');
+		SPApiDll.INSTANCE.SPAPI_AddOrder(addOrder((byte) 'B'));
+
+		System.out.println("Add order:  B");
 
 		System.out.println("Test 4");
 		
@@ -558,7 +558,9 @@ public class TestSPApi
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		addOrder((byte) 'S');
+		SPApiDll.INSTANCE.SPAPI_AddOrder(addOrder((byte) 'S'));
+
+		System.out.println("Add order:  B");
 		
 		counter = 0;
 		
