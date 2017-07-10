@@ -59,6 +59,10 @@ public class TestSPApi
 	public interface SPApiDll extends StdCallLibrary
 	{
 		SPApiDll INSTANCE = (SPApiDll) Native.loadLibrary("spapidllm64.dll", SPApiDll.class);
+		
+		SPApiDll SYNC_INSTANCE = (SPApiDll)
+		
+		Native.synchronizedLibrary(INSTANCE);
 
 		int SPAPI_Initialize();
 
