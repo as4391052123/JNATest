@@ -274,6 +274,10 @@ public class TestSPApi
 		}
 	}
 	
+	public interface p_SPAPI_AddOrder extends StdCallCallback {
+		int apply(SPApiOrder order);
+	};
+	
 	public interface p_SPAPI_Uninitialize extends StdCallCallback {
 		void apply();
 	};
