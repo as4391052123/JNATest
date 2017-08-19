@@ -73,6 +73,10 @@ public class TestSPApi4
 		System.out.println("Get price by code: " + price.Last[0] + ", Open: " + price.Open);
 		currentBid = price.Bid[0];
 		currentAsk = price.Ask[0];
+		
+		api = null;
+		System.gc();
+		
 		return i;
 	}
 
