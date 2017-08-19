@@ -58,6 +58,9 @@ public class TestSPApi4
 		System.out.println("AccName: " + Native.toString(info.AccName));
 		System.out.println("Buying Power: " + info.BuyingPower);
 
+		api = null;
+		System.gc();
+		
 		return i;
 
 	}
@@ -158,6 +161,9 @@ public class TestSPApi4
 					+ trades.get(i).BuySell);
 
 		}
+		
+		api = null;
+		System.gc();
 
 	}
 
@@ -228,6 +234,11 @@ public class TestSPApi4
 		
 		SPApi api = SPApi.INSTANCE;
 		
+		api = null;
+		System.gc();
+		
+		
+		api = SPApi.INSTANCE;
 		
 		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
 		
@@ -380,7 +391,8 @@ public class TestSPApi4
 		//
 		// System.out.println("logout: " + logout);
 		System.out.println("uninit: " + un);
-
+		api = null;
+		System.gc();
 	}
 
 	public static void setBytes(byte[] bytes, String s)
