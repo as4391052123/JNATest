@@ -27,14 +27,19 @@ public class TestSPApi4
 	
 	static byte[] product = getBytes("CLU7", 16);
 	
-	static int port = 8080;
+	/*static int port = 8080;
 	static String license = "58A665DE84D02";
 	static String app_id = "SPDEMO";
 	static String userid = "DEMO201702141";
 	static String password = "00000000";
 	static String server = "demo.spsystem.info";
-
-
+*/
+	static int port = 8080;
+	static String license = "58BA6E2F967DE";
+	static String app_id = "SPDEMO";
+	static String userid = "DEMO201703047";
+	static String password = "830811aa";
+	static String server = "demo.spsystem.info";
 
 //	SPApi api;
 	
