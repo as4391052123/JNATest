@@ -239,7 +239,7 @@ public class TestSPApi4
 		int logout = 1;
 		
 		SPApi api = SPApi.INSTANCE;
-		
+				
 		api = null;
 		System.gc();
 		
@@ -267,6 +267,12 @@ public class TestSPApi4
 				", order status: " + order.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
 
 		in = api.SPAPI_Initialize();
+		
+		api = null;
+		System.gc();
+		
+		
+		api = SPApi.INSTANCE;
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
