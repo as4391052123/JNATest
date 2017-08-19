@@ -1,7 +1,13 @@
 package test.icegalaxy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import test.icegalaxy.SPApi;
+import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
+import test.icegalaxy.TestSPApi.SPApiDll.SPApiPrice;
+import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
+
 import java.util.List;
 
 import com.sun.jna.Callback;
@@ -21,17 +27,31 @@ public class TestSPApi4
 	static long status = 0;
 	public static double currentBid;
 	public static double currentAsk;
-
-	static byte[] product = getBytes("CLQ7", 16);
-
-	SPApi api;
 	
-	public static int getAccInfo(SPApi api)
+	static byte[] product = getBytes("CLQ7", 16);
+	
+	static int port = 8080;
+	static String license = "58A665DE84D02";
+	static String app_id = "SPDEMO";
+	static String userid = "DEMO201702141";
+	static String password = "00000000";
+	static String server = "demo.spsystem.info";
+
+
+
+//	SPApi api;
+	
+
+	
+	public static int getAccInfo()
 	{
 		
-		api.SPApiAccInfo info = new 	api.SPApiAccInfo();
+		SPApi api = SPApi.INSTANCE;
+		
+		
+		SPApi.SPApiAccInfo info = new SPApi.SPApiAccInfo();
 
-		int i = SPApiDll.INSTANCE.SPAPI_GetAccInfo(userid, info);
+		int i = api.SPAPI_GetAccInfo(userid, info);
 
 		System.out.println("AEID: " + Native.toString(info.AEId));
 		System.out.println("ClientID: " + Native.toString(info.ClientId));
@@ -44,8 +64,9 @@ public class TestSPApi4
 
 	public static int getPriceByCode()
 	{
-		SPApiPrice price = new SPApiPrice();
-		int i = SPApiDll.INSTANCE.SPAPI_GetPriceByCode(userid, product, price);
+		SPApi api = SPApi.INSTANCE;
+		SPApi.SPApiPrice price = new SPApi.SPApiPrice();
+		int i = api.SPAPI_GetPriceByCode(userid, product, price);
 		System.out.println("Get price by code: " + price.Last[0] + ", Open: " + price.Open);
 		currentBid = price.Bid[0];
 		currentAsk = price.Ask[0];
@@ -122,9 +143,11 @@ public class TestSPApi4
 
 	public static void displayAllTrades()
 	{
-		ArrayList<SPApiTrade> trades = null;
+		ArrayList<SPApi.SPApiTrade> trades = null;
 
-		SPApiDll.INSTANCE.SPAPI_GetAllTrades(userid, userid, trades);
+		SPApi api = SPApi.INSTANCE;
+		
+		api.SPAPI_GetAllTrades(userid, userid, trades);
 
 		System.out.println("Trying to display all trades");
 
@@ -138,6 +161,62 @@ public class TestSPApi4
 
 	}
 
+	public interface p_SPAPI_AddOrder extends StdCallCallback {
+		int apply(SPApiOrder order);
+	};
+	
+	public interface p_SPAPI_Uninitialize extends StdCallCallback {
+		void apply();
+	};
+	
+	public interface RegisterOrder extends StdCallCallback
+	{
+		void invoke(long rec_no, SPApiOrder order);
+	}
+
+	public interface RegisterOrderB4 extends StdCallCallback
+	{
+		void invoke(SPApiOrder order);
+	}
+
+	public interface RegisterOrderFail extends StdCallCallback
+	{
+		void invoke(int action, SPApiOrder order, long err_code, String err_msg);
+	}
+
+	public interface RegisterTradeReport extends StdCallCallback
+	{
+		void invoke(long rec_no, SPApiTrade trade);
+	}
+
+	
+
+	public interface RegisterPriceUpdate extends StdCallCallback
+	{
+		void invoke(SPApiPrice price);
+	}
+
+	public interface RegisterConn extends StdCallCallback
+	{
+		void invoke(long host_type, long con_status);
+	}
+
+	public interface RegisterError extends StdCallCallback
+	{
+		void invoke(short host_id, long link_err);
+	}
+
+	public interface RegisterLoginReply extends StdCallCallback
+	{
+		void printLoginStatus(long ret_code, String ret_msg);
+	}
+
+	public interface RegisterLoginStatusUpdate extends StdCallCallback
+	{
+		void printStatus(long login_status);
+	}
+
+	
 	public static void main(String[] args)
 	{
 
@@ -147,7 +226,7 @@ public class TestSPApi4
 		int login = 1;
 		int logout = 1;
 		
-		api = SPApi.INSTANCE;
+		SPApi api = SPApi.INSTANCE;
 		
 		
 		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
@@ -170,31 +249,31 @@ public class TestSPApi4
 		RegisterOrderFail orderFail = (action, order, err_code, err_msg) -> System.out.println("Action no: " + action + 
 				", order status: " + order.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
 
-		in = SPApiDll.INSTANCE.SPAPI_Initialize();
+		in = api.SPAPI_Initialize();
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterApiPriceUpdate(priceUpdate);
+		api.SPAPI_RegisterApiPriceUpdate(priceUpdate);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterTradeReport(tradeReport);
+		api.SPAPI_RegisterTradeReport(tradeReport);
 		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderRequestFailed(orderFail);
+		api.SPAPI_RegisterOrderRequestFailed(orderFail);
 		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderBeforeSendReport(orderB4);
+		//api.SPAPI_RegisterOrderBeforeSendReport(orderB4);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginStatusUpdate(update);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterConnectionErrorUpdate(error);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterConnectingReply(conn);
+		api.SPAPI_RegisterConnectingReply(conn);
 		
-		SPApiDll.INSTANCE.SPAPI_RegisterOrderReport(orderReport);
+		api.SPAPI_RegisterOrderReport(orderReport);
 
-		SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
+		api.SPAPI_RegisterLoginReply(loginReply);
 
-		SPApiDll.INSTANCE.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
+		api.SPAPI_SetLoginInfo(server, port, license, app_id, userid, password);
 
-		login = SPApiDll.INSTANCE.SPAPI_Login();
+		login = api.SPAPI_Login();
 
 		while (status < 9)
 
@@ -213,7 +292,7 @@ public class TestSPApi4
 		
 		System.out.println("Test 1");
 
-		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 1);
+		price = api.SPAPI_SubscribePrice(userid, product, 1);
 
 		System.out.println("Price subscribed: " + price);
 		
@@ -225,7 +304,6 @@ public class TestSPApi4
 				Thread.sleep(1000);
 			} catch (InterruptedException e)
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			counter++;
@@ -240,7 +318,7 @@ public class TestSPApi4
 
 		System.out.println("Test 3");
 		
-		SPApiDll.INSTANCE.SPAPI_AddOrder(addOrder((byte) 'B'));
+		api.SPAPI_AddOrder(addOrder((byte) 'B'));
 
 		System.out.println("Add order:  B");
 
@@ -260,7 +338,7 @@ public class TestSPApi4
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		SPApiDll.INSTANCE.SPAPI_AddOrder(addOrder((byte) 'S'));
+		api.SPAPI_AddOrder(addOrder((byte) 'S'));
 
 		System.out.println("Add order:  B");
 		
@@ -277,11 +355,11 @@ public class TestSPApi4
 		System.out.println("AccInfo: " + getAccInfo());
 //		displayAllTrades();
 
-		price = SPApiDll.INSTANCE.SPAPI_SubscribePrice(userid, product, 0);
+		price = api.SPAPI_SubscribePrice(userid, product, 0);
 
 		sleep(1000);
 
-		logout = SPApiDll.INSTANCE.SPAPI_Logout(userid);
+		logout = api.SPAPI_Logout(userid);
 
 		while (logout != 0)
 		{
@@ -295,7 +373,7 @@ public class TestSPApi4
 
 		System.out.println("logout: " + logout);
 
-		un = SPApiDll.INSTANCE.SPAPI_Uninitialize(userid);
+		un = api.SPAPI_Uninitialize(userid);
 
 		// System.out.println("init: " + in);
 		// System.out.println("login: " + login);

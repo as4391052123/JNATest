@@ -35,7 +35,7 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 
 		int SPAPI_ActivateAllOrders(String user_id, String acc_no);
 
-		int SPAPI_GetAccInfo(String user_id, SPApiAccInfo acc_info);
+		int SPAPI_GetAccInfo(String user_id, Structure acc_info);
 
 		int SPAPI_GetPriceByCode(String user_id, byte[] prod_code, SPApiPrice price);
 
@@ -45,27 +45,58 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 
 		int SPAPI_Logout(String user_id);
 
-		int SPAPI_AddOrder(SPApiOrder order);
+		int SPAPI_AddOrder(Structure order);
 
 		int SPAPI_SubscribePrice(String user_id, byte[] prod_code, int mode);
 
-		void SPAPI_RegisterTradeReport(RegisterTradeReport tradeReport);
+		void SPAPI_RegisterTradeReport(StdCallCallback tradeReport);
 
-		void SPAPI_RegisterOrderRequestFailed(RegisterOrderFail orderFail);
+		void SPAPI_RegisterOrderRequestFailed(StdCallCallback orderFail);
 
 //		void SPAPI_RegisterOrderBeforeSendReport(RegisterOrderB4 orderB4);
 
-		void SPAPI_RegisterApiPriceUpdate(RegisterPriceUpdate priceUpdate);
+		void SPAPI_RegisterApiPriceUpdate(StdCallCallback priceUpdate);
 
-		void SPAPI_RegisterConnectingReply(RegisterConn conn);
+		void SPAPI_RegisterConnectingReply(StdCallCallback conn);
 		
-		void SPAPI_RegisterOrderReport(RegisterOrder orderReport);
+		void SPAPI_RegisterOrderReport(StdCallCallback orderReport);
 
 
-		void SPAPI_RegisterLoginReply(RegisterLoginReply register);
+		void SPAPI_RegisterLoginReply(StdCallCallback register);
 
-		void SPAPI_RegisterLoginStatusUpdate(RegisterLoginStatusUpdate update);
+		void SPAPI_RegisterLoginStatusUpdate(StdCallCallback update);
 
+		public class SPApiAccInfo extends Structure
+		{
+
+			public double NAV;
+			public double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin,
+					MaxLoanLimit, TradingLimit, RawMargin, IMargin, MMargin, TodayTrans, LoanLimit, TotalFee, LoanToMR,
+					LoanToMV;
+			// char[] AccName = new char[16];
+			public byte[] AccName = new byte[16];
+			public byte[] BaseCcy = new byte[4];
+			public byte[] MarginClass = new byte[16];
+			public byte[] TradeClass = new byte[16];
+			public byte[] ClientId = new byte[16];
+			public byte[] AEId = new byte[16];
+			public byte AccType;
+			public byte CtrlLevel;
+			public byte Active;
+			public byte MarginPeriod;
+
+			@Override
+			protected List getFieldOrder()
+			{
+				return Arrays.asList(new String[]
+				{ "NAV", "BuyingPower", "CashBal", "MarginCall", "CommodityPL", "LockupAmt", "CreditLimit", "MaxMargin",
+						"MaxLoanLimit", "TradingLimit", "RawMargin", "IMargin", "MMargin", "TodayTrans", "LoanLimit",
+						"TotalFee", "LoanToMR", "LoanToMV", "AccName", "BaseCcy", "MarginClass", "TradeClass",
+						"ClientId", "AEId", "AccType", "CtrlLevel", "Active", "MarginPeriod" });
+			}
+
+		}
+		
 		public class SPApiTrade extends Structure
 		{
 			public double RecNo;
@@ -106,36 +137,7 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 			}
 		}
 
-		public class SPApiAccInfo extends Structure
-		{
-
-			public double NAV;
-			public double BuyingPower, CashBal, MarginCall, CommodityPL, LockupAmt, CreditLimit, MaxMargin,
-					MaxLoanLimit, TradingLimit, RawMargin, IMargin, MMargin, TodayTrans, LoanLimit, TotalFee, LoanToMR,
-					LoanToMV;
-			// char[] AccName = new char[16];
-			public byte[] AccName = new byte[16];
-			public byte[] BaseCcy = new byte[4];
-			public byte[] MarginClass = new byte[16];
-			public byte[] TradeClass = new byte[16];
-			public byte[] ClientId = new byte[16];
-			public byte[] AEId = new byte[16];
-			public byte AccType;
-			public byte CtrlLevel;
-			public byte Active;
-			public byte MarginPeriod;
-
-			@Override
-			protected List getFieldOrder()
-			{
-				return Arrays.asList(new String[]
-				{ "NAV", "BuyingPower", "CashBal", "MarginCall", "CommodityPL", "LockupAmt", "CreditLimit", "MaxMargin",
-						"MaxLoanLimit", "TradingLimit", "RawMargin", "IMargin", "MMargin", "TodayTrans", "LoanLimit",
-						"TotalFee", "LoanToMR", "LoanToMV", "AccName", "BaseCcy", "MarginClass", "TradeClass",
-						"ClientId", "AEId", "AccType", "CtrlLevel", "Active", "MarginPeriod" });
-			}
-
-		}
+		
 
 		public class SPApiPrice extends Structure
 		{
