@@ -361,6 +361,8 @@ public class TestSPApi4
 
 		System.out.println("AccInfo: " + getAccInfo());
 
+		order = new SPApi.SPApiOrder();
+		
 		processOrder(order, (byte) 'S');
 		
 		api.SPAPI_AddOrder(order);
@@ -368,7 +370,7 @@ public class TestSPApi4
 		order = null;
 		System.gc();
 
-		System.out.println("Add order:  B");
+
 		
 		counter = 0;
 		
