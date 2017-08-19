@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import test.icegalaxy.SPApi;
-import test.icegalaxy.TestSPApi.SPApiDll.SPApiOrder;
-import test.icegalaxy.TestSPApi.SPApiDll.SPApiPrice;
-import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 
 import java.util.List;
 
@@ -80,12 +77,12 @@ public class TestSPApi4
 		return i;
 	}
 
-	public static SPApiOrder addOrder(byte buy_sell)
+	public static void processOrder(SPApi.SPApiOrder order, byte buy_sell)
 	{
 
 //		
 //		int rc;
-		SPApiOrder order = new SPApiOrder();
+		
 
 		setBytes(order.AccNo, userid);
 
@@ -140,7 +137,7 @@ public class TestSPApi4
 
 		// System.out.println("order status: " + order.Status);
 
-		return order;
+		
 		// if (rc == 0) { if (DllShowTextData != null) DllShowTextData("Add
 		// Order Success!"); }
 		// else { if (DllShowTextData != null) DllShowTextData("Add Order
@@ -172,7 +169,7 @@ public class TestSPApi4
 	}
 
 	public interface p_SPAPI_AddOrder extends StdCallCallback {
-		int apply(SPApiOrder order);
+		int apply(SPApi.SPApiOrder order);
 	};
 	
 	public interface p_SPAPI_Uninitialize extends StdCallCallback {
@@ -181,29 +178,29 @@ public class TestSPApi4
 	
 	public interface RegisterOrder extends StdCallCallback
 	{
-		void invoke(long rec_no, SPApiOrder order);
+		void invoke(long rec_no, SPApi.SPApiOrder order);
 	}
 
 	public interface RegisterOrderB4 extends StdCallCallback
 	{
-		void invoke(SPApiOrder order);
+		void invoke(SPApi.SPApiOrder order);
 	}
 
 	public interface RegisterOrderFail extends StdCallCallback
 	{
-		void invoke(int action, SPApiOrder order, long err_code, String err_msg);
+		void invoke(int action, SPApi.SPApiOrder order, long err_code, String err_msg);
 	}
 
 	public interface RegisterTradeReport extends StdCallCallback
 	{
-		void invoke(long rec_no, SPApiTrade trade);
+		void invoke(long rec_no, SPApi.SPApiTrade trade);
 	}
 
 	
 
 	public interface RegisterPriceUpdate extends StdCallCallback
 	{
-		void invoke(SPApiPrice price);
+		void invoke(SPApi.SPApiPrice price);
 	}
 
 	public interface RegisterConn extends StdCallCallback
@@ -299,7 +296,6 @@ public class TestSPApi4
 				Thread.sleep(1000);
 			} catch (InterruptedException e)
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -333,7 +329,14 @@ public class TestSPApi4
 
 		System.out.println("Test 3");
 		
-		api.SPAPI_AddOrder(addOrder((byte) 'B'));
+		SPApi.SPApiOrder order = new SPApi.SPApiOrder();
+		
+		processOrder(order, (byte) 'B');
+		
+		api.SPAPI_AddOrder(order);
+		
+		order = null;
+		System.gc();
 
 		System.out.println("Add order:  B");
 
@@ -353,7 +356,12 @@ public class TestSPApi4
 
 		System.out.println("AccInfo: " + getAccInfo());
 
-		api.SPAPI_AddOrder(addOrder((byte) 'S'));
+		processOrder(order, (byte) 'S');
+		
+		api.SPAPI_AddOrder(order);
+		
+		order = null;
+		System.gc();
 
 		System.out.println("Add order:  B");
 		
