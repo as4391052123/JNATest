@@ -89,24 +89,30 @@ public class TestSPApi4
 //		int rc;
 		
 
-		setBytes(order.AccNo, userid);
+//		setBytes(order.AccNo, userid);
+		
+		order.AccNo = Native.toByteArray(userid);
 
 		order.ProdCode = product; // need the replace necessary byte one by one,
 									// not setting the whole new array
 
-		setBytes(order.Initiator, userid);
+//		setBytes(order.Initiator, userid);
+		
+		order.Initiator = Native.toByteArray(userid);
 
 		order.BuySell = buy_sell;
 	
 		order.Qty = 2;
 
-		setBytes(order.Ref, "Java");
-		setBytes(order.Ref2, "SPAPI");
-		setBytes(order.GatewayCode, "");
+//		setBytes(order.Ref, "Java");
+//		setBytes(order.Ref2, "SPAPI");
+//		setBytes(order.GatewayCode, "");
+		
+		
 		
 
 		order.CondType = 0; // normal type
-		setBytes(order.ClOrderId, "2");
+//		setBytes(order.ClOrderId, "2");
 		order.ValidType = 0;
 
 		order.DecInPrice = 2;
