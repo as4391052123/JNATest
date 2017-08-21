@@ -229,9 +229,11 @@ public class TestSPApi4
 
 		in = api.SPAPI_Initialize();
 		
+		api.SPAPI_Logout(userid);
+		
 		api = null;
 		System.gc();
-		
+				
 		
 		api = SPApi.INSTANCE;
 		
