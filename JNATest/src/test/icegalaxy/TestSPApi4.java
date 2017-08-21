@@ -93,7 +93,7 @@ public class TestSPApi4
 		
 		byte[] scr = userid.getBytes();
 //		order.AccNo[0] = (byte) scr.length;
-		System.arraycopy(scr, 0, order.AccNo, 0, scr.length);
+//		System.arraycopy(scr, 0, order.AccNo, 0, scr.length);
 //		order.AccNo = Native.toByteArray(userid);
 
 		order.ProdCode = product; // need the replace necessary byte one by one,
@@ -101,7 +101,7 @@ public class TestSPApi4
 
 //		setBytes(order.Initiator, userid);
 		
-		order.Initiator[0] = (byte) scr.length;
+//		order.Initiator[0] = (byte) scr.length;
 		System.arraycopy(scr, 0, order.Initiator, 0, scr.length);
 		
 //		order.Initiator = Native.toByteArray(userid);
