@@ -28,6 +28,8 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 		int SPAPI_Initialize();
 
 		int SPAPI_Uninitialize(String userid);
+		
+
 
 		void SPAPI_GetAllTrades(String user_id, String acc_no, ArrayList<SPApiTrade> trades);
 		
@@ -52,6 +54,8 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 		void SPAPI_RegisterTradeReport(StdCallCallback tradeReport);
 
 		void SPAPI_RegisterOrderRequestFailed(StdCallCallback orderFail);
+		
+		void SPAPI_RegisterAccountLogoutReply(LogoutReply logoutReply);
 
 //		void SPAPI_RegisterOrderBeforeSendReport(RegisterOrderB4 orderB4);
 
@@ -236,6 +240,10 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 
 		}
 		
+		
+		public interface LogoutReply extends StdCallCallback {
+			void apply(String accNo, long ret_code, String ret_msg);
+		};
 		
 		public interface p_SPAPI_AddOrder extends StdCallCallback {
 			int apply(SPApiOrder order);

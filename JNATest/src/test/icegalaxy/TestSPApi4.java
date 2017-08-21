@@ -185,60 +185,7 @@ public class TestSPApi4
 
 	}
 
-	public interface p_SPAPI_AddOrder extends StdCallCallback {
-		int apply(SPApi.SPApiOrder order);
-	};
 	
-	public interface p_SPAPI_Uninitialize extends StdCallCallback {
-		void apply();
-	};
-	
-	public interface RegisterOrder extends StdCallCallback
-	{
-		void invoke(long rec_no, SPApi.SPApiOrder order);
-	}
-
-	public interface RegisterOrderB4 extends StdCallCallback
-	{
-		void invoke(SPApi.SPApiOrder order);
-	}
-
-	public interface RegisterOrderFail extends StdCallCallback
-	{
-		void invoke(int action, SPApi.SPApiOrder order, long err_code, String err_msg);
-	}
-
-	public interface RegisterTradeReport extends StdCallCallback
-	{
-		void invoke(long rec_no, SPApi.SPApiTrade trade);
-	}
-
-	
-
-	public interface RegisterPriceUpdate extends StdCallCallback
-	{
-		void invoke(SPApi.SPApiPrice price);
-	}
-
-	public interface RegisterConn extends StdCallCallback
-	{
-		void invoke(long host_type, long con_status);
-	}
-
-	public interface RegisterError extends StdCallCallback
-	{
-		void invoke(short host_id, long link_err);
-	}
-
-	public interface RegisterLoginReply extends StdCallCallback
-	{
-		void printLoginStatus(long ret_code, String ret_msg);
-	}
-
-	public interface RegisterLoginStatusUpdate extends StdCallCallback
-	{
-		void printStatus(long login_status);
-	}
 
 	
 	public static void main(String[] args)
@@ -258,24 +205,26 @@ public class TestSPApi4
 		
 		api = SPApi.INSTANCE;
 		
-		RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
+		SPApi.LogoutReply logoutReply = (accNo, ret_code, ret_msg) -> System.out.println("Logout Reply, accNo: " + accNo + ", ret_code: " + ret_code + ",ret_msg: " + ret_msg );
 		
-		RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
+		SPApi.RegisterOrder orderReport = (rec, order) -> System.out.println("Order report, Rec no: " + rec + ", Price: " + order.Price);
+		
+		SPApi.RegisterOrderB4 orderB4 = (orderB4x) -> System.out.println("Order status b4: " + orderB4x.Status);
 
-		RegisterTradeReport tradeReport = (rec_no, trade) -> System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
+		SPApi.RegisterTradeReport tradeReport = (rec_no, trade) -> System.out.println("Rec_no: " + rec_no + ", Price: " + trade.Price);
 		
-		RegisterLoginReply loginReply = (ret_code, ret_msg) -> System.out.println("Login reply: " + ret_msg + " [" + ret_code + "]");
+		SPApi.RegisterLoginReply loginReply = (ret_code, ret_msg) -> System.out.println("Login reply: " + ret_msg + " [" + ret_code + "]");
 		//Try using lambda
-		RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + ", Dec place: " + last.DecInPrice + " " );
+		SPApi.RegisterPriceUpdate priceUpdate = (last) -> System.out.print(last.Last[0] + ", Dec place: " + last.DecInPrice + " " );
 	
 
-		RegisterConn conn = (host_type,  con_status) ->
+		SPApi.RegisterConn conn = (host_type,  con_status) ->
 		{
 			System.out.println("conn reply- host type: " + host_type + ", con state: " + con_status);
 			status += con_status;
 		};
 				
-		RegisterOrderFail orderFail = (action, order, err_code, err_msg) -> System.out.println("Action no: " + action + 
+		SPApi.RegisterOrderFail orderFail = (action, order, err_code, err_msg) -> System.out.println("Action no: " + action + 
 				", order status: " + order.Status + ", dec place: " + order.DecInPrice + ", Error msg: " + err_msg);
 
 		in = api.SPAPI_Initialize();
@@ -285,6 +234,8 @@ public class TestSPApi4
 		
 		
 		api = SPApi.INSTANCE;
+		
+		api.SPAPI_RegisterAccountLogoutReply(logoutReply);
 
 		// SPApiDll.INSTANCE.SPAPI_RegisterLoginReply(loginReply);
 
@@ -293,6 +244,8 @@ public class TestSPApi4
 		api.SPAPI_RegisterTradeReport(tradeReport);
 		
 		api.SPAPI_RegisterOrderRequestFailed(orderFail);
+		
+		
 		
 		//api.SPAPI_RegisterOrderBeforeSendReport(orderB4);
 
