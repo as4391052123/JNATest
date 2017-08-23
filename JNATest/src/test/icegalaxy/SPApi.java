@@ -8,7 +8,7 @@ import com.sun.jna.Callback;
 import com.sun.jna.Library;
 
 import com.sun.jna.Native;
-
+import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 import com.sun.jna.win32.StdCallLibrary;
 import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
@@ -207,7 +207,7 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 			public int ValidTime;
 			public int SchedTime;
 			public int TimeStamp;
-			public int OrderOptions;
+			public NativeLong OrderOptions;
 			public byte[] AccNo = new byte[16];
 			public byte[] ProdCode = new byte[16];
 			public byte[] Initiator = new byte[16];
@@ -223,7 +223,7 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 			public byte ValidType;
 			public byte Status;
 			public byte DecInPrice;
-			public int OrderAction;
+			public byte OrderAction;
 			public int updateTime;
 			public int updateSeqNo;
 
