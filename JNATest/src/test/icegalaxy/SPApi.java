@@ -200,13 +200,13 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 			public double DownLevel;
 			public double DownPrice;
 			public long ExtOrderNo;
-			public int IntOrderNo;
-			public int Qty;
-			public int TradedQty;
-			public int TotalQty;
-			public int ValidTime;
-			public int SchedTime;
-			public int TimeStamp;
+			public NativeLong IntOrderNo;
+			public NativeLong Qty;
+			public NativeLong TradedQty;
+			public NativeLong TotalQty;
+			public NativeLong ValidTime;
+			public NativeLong SchedTime;
+			public NativeLong TimeStamp;
 			public NativeLong OrderOptions;
 			public byte[] AccNo = new byte[16];
 			public byte[] ProdCode = new byte[16];
@@ -224,8 +224,8 @@ import test.icegalaxy.TestSPApi.SPApiDll.SPApiTrade;
 			public byte Status;
 			public byte DecInPrice;
 			public byte OrderAction;
-			public int updateTime;
-			public int updateSeqNo;
+			public NativeLong updateTime;
+			public NativeLong updateSeqNo;
 
 			@Override
 			protected List getFieldOrder()

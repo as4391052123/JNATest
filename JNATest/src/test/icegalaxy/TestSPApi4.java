@@ -11,7 +11,7 @@ import com.sun.jna.Callback;
 import com.sun.jna.Library;
 
 import com.sun.jna.Native;
-
+import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 import com.sun.jna.win32.StdCallLibrary;
 import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
@@ -108,7 +108,7 @@ public class TestSPApi4
 
 		order.BuySell = buy_sell;
 	
-		order.Qty = 2;
+		order.Qty = new NativeLong((long) 2);
 
 //		setBytes(order.Ref, "Java");
 //		setBytes(order.Ref2, "SPAPI");
@@ -125,7 +125,7 @@ public class TestSPApi4
 		
 		order.StopType = 'L';
 		order.OrderType = 0; // limit
-		order.OrderOptions = 0;
+		order.OrderOptions = new NativeLong((long) 0);
 
 		getPriceByCode();
 
