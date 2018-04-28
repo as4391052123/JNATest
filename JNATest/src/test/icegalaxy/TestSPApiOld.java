@@ -30,12 +30,6 @@ public class TestSPApiOld
 
 	static byte[] product = getBytes("CLQ7", 16);
 
-	/*static int port = 8080;
-	static String license = "76C2FB5B60006C7A";
-	static String app_id = "BS";
-	static String userid = "T865829";
-	static String password = "ting1980";
-	static String server = "futures.bsgroup.com.hk";*/
 
 /*	static int port = 8080;
 	static String license = "58BA6E2F967DE";
